@@ -21,21 +21,21 @@ class Welcome extends CI_Controller {
 	public function index()
 	{
 		if ($this->session->userdata('logged_in') == FALSE) {
-				redirect('admin/login'); // the user is not logged in, redirect them!
+			redirect('admin/login'); // the user is not logged in, redirect them!
 		} else {
-				$level = $this->session->userdata('level');
-				// access login for admin
-        if($level === '1'){
-            redirect('admin/page');
+			$level = $this->session->userdata('level');
+			// access login for admin
+			if($level === '1'){
+				redirect('admin/page');
 
-        // access login for staff
-        }elseif($level === '2'){
-            redirect('admin/page/staff');
+			// access login for staff
+			}elseif($level === '2'){
+				redirect('admin/page/staff');
 
-        // access login for author
-        }else{
-            redirect('admin/page/author');
-        }
+			// access login for author
+			}else{
+				redirect('admin/page/author');
+			}
 		}
 	}
 }

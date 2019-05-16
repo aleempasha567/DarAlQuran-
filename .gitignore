@@ -8,8 +8,6 @@ application/logs/*
 
 !application/*/.htaccess
 
-application/sessfons
-
 composer.lock
 
 user_guide_src/build/*

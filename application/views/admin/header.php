@@ -37,6 +37,16 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Quran
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a href="<?php echo site_url('admin/quranreciters');?>" class="dropdown-item" href="#">Reciter</a>
+                        <a class="dropdown-item" href="<?php echo site_url('admin/quranrecitationtypes');?>">Recitations type</a>
+                        <a class="dropdown-item" href="<?php echo site_url('admin/quranriways');?>">Riwaya</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       FATWA
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">

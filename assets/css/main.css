@@ -16,6 +16,15 @@ body {
 .container {
   margin-top: 2rem;
 }
+
+.top-nav {
+  background-color: rgba(0,123,255,.5) !important;
+}
+
+.dropdown-item:focus, .dropdown-item:hover {
+  background-color: #b3d7ff;
+}
+
 .footer {
   position: absolute;
   bottom: 0;

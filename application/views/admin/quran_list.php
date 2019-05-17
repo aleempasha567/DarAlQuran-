@@ -16,10 +16,11 @@
         <thead class="thead-dark">
             <tr>
                 <th>#</th>
-                <th>Reciter Name</th>
-                <th>Recitation Type Name</th>
-                <th>Riwaya Name</th>
+                <th>Reciter</th>
+                <th>Recitation Type</th>
+                <th>Riwaya</th>
                 <th>Description</th>
+                <th>Track Code</th>
                 <th>Date Added</th>
                 <th>Status</th>
                 <th>Update </th>
@@ -37,11 +38,12 @@
                 <td><?php echo $row->recitation_type_name;?></td>
                 <td><?php echo $row->riwaya_name;?></td>
                 <td><?php echo $row->description;?></td>
+                <td><?php echo $row->url;?></td>
                 <td><?php echo $row->date_time;?></td>
                 <td><?php if($row->status) echo 'Active'; else echo 'In-Active'?></td>
                 <td>
                     <button type="button" class="btn btn-info btn-sm editRow" data-toggle="modal" data-target="#exampleModalCenter1">Edit</button>
-                    <button type="button" class="btn btn-success btn-sm playRow" data-toggle="modal" data-target="#exampleModalCenter1">Play</button>
+                    <button type="button" class="btn btn-success btn-sm playRow" data-toggle="modal" data-target="#exampleModalCenter2">Play</button>
                 </td>
             </tr>
             <?php
@@ -85,8 +87,8 @@
           <textarea class="form-control" id="description" rows="3"></textarea>
         </div>
         <div class="form-group">
-            <label for="exampleInputAuthorName">Audio Url</label>
-            <input type="text" class="form-control" id="aduioUrl" placeholder="URL">
+            <label for="exampleInputAuthorName">Track Code</label>
+            <input type="number" class="form-control" id="aduioUrl" placeholder="Track Code">
         </div>
       </div>
       <div class="modal-footer">
@@ -131,8 +133,8 @@
           <textarea class="form-control" id="editDescription" rows="3"></textarea>
         </div>
         <div class="form-group">
-            <label for="exampleInputAuthorName">Audio Url</label>
-            <input type="text" class="form-control" id="editAduioUrl" placeholder="Riwaya Name">
+            <label for="exampleInputAuthorName">Track Code</label>
+            <input type="number" class="form-control" id="editAduioUrl" placeholder="Track Code">
         </div>
         <div class="form-group">
             <label for="exampleInputStatus">Status</label>
@@ -150,6 +152,25 @@
       <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           <button type="button" class="btn btn-success" id="updateToDB">Update</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--  Play Model -->
+<div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Quran Audio Player</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="audioPopupClose" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
@@ -218,6 +239,21 @@ $(document).ready(function() {
                 location.reload();
             }
         })
+    });
+
+    $('.playRow').on('click',function(){
+      var quranListDetails = $(this).parents('tr').attr('id');
+      var res = quranListDetails.split('_');
+      var iframeCode = '<iframe width="100%" height="100" scrolling="no" frameborder="yes" allow="autoplay" src="https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/';
+        iframeCode += res[5];
+        iframeCode += '?secret_token=s-QzwIV&color=#ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>';
+      $('#exampleModalCenter2').find('.modal-body').html(iframeCode);
+    });
+    $('#exampleModalCenter2').on('hidden.bs.modal', function () {
+      $(this).find('.modal-body').html('');
+    });
+    $('#audioPopupClose').on('click',function() {
+      $('#exampleModalCenter2').find('.modal-body').html('');
     });
 } );
 </script>

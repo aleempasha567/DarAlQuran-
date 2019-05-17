@@ -43,6 +43,7 @@
                         <a href="<?php echo site_url('admin/quranreciters');?>" class="dropdown-item" href="#">Reciter</a>
                         <a class="dropdown-item" href="<?php echo site_url('admin/quranrecitationtypes');?>">Recitations type</a>
                         <a class="dropdown-item" href="<?php echo site_url('admin/quranriways');?>">Riwaya</a>
+                        <a class="dropdown-item" href="<?php echo site_url('admin/quranlist');?>">List</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">

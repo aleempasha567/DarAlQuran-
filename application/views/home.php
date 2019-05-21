@@ -62,7 +62,7 @@
         <div class="mid-icon"> <img src="<?php echo base_url('assets/images/2.png');?>" class="img-responsive" /> </div>
         <p>القرآن الكريم</p>
       </div>
-    <a>
+      <a>
   </div>
   <div class="col-md-2 col-lg-2 col-sm-4 col-xs-6">
     <div class="iconic-content">
@@ -199,42 +199,9 @@
 <div class="quran-volume">
   <div class="col-md-6 col-lg-6 col-sm-6">
     <h1 class="heading">مكتبة صوتية جديدة </h1>
-    <div class="listen_icon col-md-3 col-lg-3 col-sm-3 col-xs-3"> <img
-        src="<?php echo base_url('assets/images/listen_icon.png'); ?>" class="img-responsive" /> </div>
-    <div class="col-md-9 col-lg-9 col-sm-9 col-xs-9">
-      <div class="container-audio">
-        <div class="colum1">
-          <div class="row"></div>
-        </div>
-        <div class="colum1">
-          <div class="row"></div>
-        </div>
-        <div class="colum1">
-          <div class="row"></div>
-        </div>
-        <div class="colum1">
-          <div class="row"></div>
-        </div>
-        <div class="colum1">
-          <div class="row"></div>
-        </div>
-        <div class="colum1">
-          <div class="row"></div>
-        </div>
-        <div class="colum1">
-          <div class="row"></div>
-        </div>
-        <div class="colum1">
-          <div class="row"></div>
-        </div>
-        <div class="colum1">
-          <div class="row"></div>
-        </div>
-      </div>
-      <div class="container-audio">
-        <audio controls loop autoplay>
-          <source src="" type="audio/ogg"> Your browser dose not Support the audio Tag </audio>
-      </div>
+    <div class="player" style="margin: 5% 0%;">
+      <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay"
+        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/615551937&color=%23000000&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
     </div>
     <table class="table">
       <tbody>

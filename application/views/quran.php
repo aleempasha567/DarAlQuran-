@@ -37,54 +37,10 @@
 
     <!--audio player-->
     <div class="col-md-8">
-      <div id="hap-wrapper">
-        <div class="left-scroller">
-          <marquee behavior="scroll" direction="left" scrollamount="5">Lorem Ipsum is simply dummy text of the printing
-            and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the</marquee>
-        </div>
-        <div class="hap-player-holder">
-
-          <div class="hap-player-controls-left">
-
-            <div class="hap-prev-toggle hap-contr-btn"><i class="fa fa-backward"></i></div>
-            <div class="hap-playback-toggle hap-contr-btn"><i class="fa fa-play"></i></div>
-            <div class="hap-next-toggle hap-contr-btn"><i class="fa fa-forward"></i></div>
-
-            <div class="hap-media-time-current">00:00</div>
-
-          </div>
-
-          <div class="hap-seekbar-wrap">
-            <div class="hap-seekbar">
-              <div class="hap-progress-bg">
-                <div class="hap-load-level"></div>
-                <div class="hap-progress-level"></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="hap-player-controls-right">
-
-            <div class="hap-media-time-total">00:00</div>
-
-            <div class="hap-volume-wrapper hap-contr-btn hap-volume-closed">
-              <div class="hap-volume-toggle" data-tooltip="Volume"><i
-                  class="hap-icon hap-icon-volume-up fa fa-volume-up"></i></div>
-              <div class="hap-volume-seekbar hap-volume-vertical">
-                <div class="hap-volume-bg">
-                  <div class="hap-volume-level"></div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-
-        <div class="hap-tooltip"></div>
+      <div class="player" style="margin-top: 5%;">
+        <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay"
+          src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/615551937&color=%23000000&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
       </div>
-
-
     </div>
     <!--audio player-->
 

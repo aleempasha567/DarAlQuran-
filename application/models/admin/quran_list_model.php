@@ -1,7 +1,7 @@
 <?php
 class Quran_list_model extends CI_Model{
 
-  function getAllQuranlist(){
+  function getAllQuranlist($status = ""){
     $t1 = 'tbl_quran';
     $t2 = 'tbl_quran_reciters';
     $t3 = 'tbl_quran_recitation_type';
@@ -9,14 +9,23 @@ class Quran_list_model extends CI_Model{
     $get = [
         $t1.'.*',
         $t2.'.reciter_name',
+        $t2.'.reciter_name_arabic',
+        $t2.'.reciter_name_french',
         $t3.'.recitation_type_name',
-        $t4.'.riwaya_name'
+        $t3.'.recitation_type_name_arabic',
+        $t3.'.recitation_type_name_french',
+        $t4.'.riwaya_name',
+        $t4.'.riwaya_name_arabic',
+        $t4.'.riwaya_name_french'
     ];
     $this->db->select($get);
     $this->db->from($t1);
     $this->db->join($t2, $t1.'.reciter_id = ' . $t2.'.id', 'left');
     $this->db->join($t3, $t1.'.recitation_type_id = ' . $t3.'.id', 'left');
     $this->db->join($t4, $t1.'.riwaya_id = ' . $t4.'.id', 'left');
+    if($status!= ''){
+      $this->db->where($t1.'.status', $status);
+    }
     return $this->db->get()->result();
   }
 

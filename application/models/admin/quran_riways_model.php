@@ -1,7 +1,10 @@
 <?php
 class Quran_riways_model extends CI_Model{
 
-  function getAllQuranRiways(){
+  function getAllQuranRiways($status = ""){
+    if($status!= ''){
+      $this->db->where('status', $status);
+    }
     $result = $this->db->get('tbl_quran_riways');
     return $result->result();
   }

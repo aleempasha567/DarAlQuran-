@@ -1,7 +1,10 @@
 <?php
 class Quran_reciter_model extends CI_Model{
 
-  function getAllQuranReciters(){
+  function getAllQuranReciters($status = ""){
+    if($status!= ''){
+      $this->db->where('status', $status);
+    }
     $result = $this->db->get('tbl_quran_reciters');
     return $result->result();
   }

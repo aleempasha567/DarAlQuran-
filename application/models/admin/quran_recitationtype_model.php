@@ -1,7 +1,10 @@
 <?php
 class Quran_recitationtype_model extends CI_Model{
 
-  function getAllQuranRecitationTypes(){
+  function getAllQuranRecitationTypes($status = ""){
+    if($status!= ''){
+      $this->db->where('status', $status);
+    }
     $result = $this->db->get('tbl_quran_recitation_type');
     return $result->result();
   }

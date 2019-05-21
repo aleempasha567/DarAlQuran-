@@ -57,10 +57,12 @@
     </div>
   </div>
   <div class="col-md-2 col-lg-2 col-sm-4 col-xs-6">
-    <div class="iconic-content">
-      <div class="mid-icon"> <img src="<?php echo base_url('assets/images/2.png');?>" class="img-responsive" /> </div>
-      <p>القرآن الكريم</p>
-    </div>
+    <a href="<?php echo site_url('quran');?>">
+      <div class="iconic-content">
+        <div class="mid-icon"> <img src="<?php echo base_url('assets/images/2.png');?>" class="img-responsive" /> </div>
+        <p>القرآن الكريم</p>
+      </div>
+    <a>
   </div>
   <div class="col-md-2 col-lg-2 col-sm-4 col-xs-6">
     <div class="iconic-content">
@@ -274,4 +276,5 @@
   <div class="col-md-6 col-lg-6 col-sm-6"> <img src="<?php echo base_url('assets/images/phone-with-logo.jpg');?>"
       class="img-responsive" /> </div>
 </div>
+<link href="<?php echo base_url('assets/css/style.css');?>" rel="stylesheet">
 <script src="<?php echo base_url('assets/js/prayerTime.js');?>"></script>

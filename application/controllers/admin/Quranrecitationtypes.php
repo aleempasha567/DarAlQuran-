@@ -18,14 +18,18 @@ class Quranrecitationtypes extends CI_Controller{
 
   function addRecitationType(){
     $recitationTypeName  = $this->input->post('recitationTypeName',TRUE);
-    $result = $this->quran_recitationtype_model->insertRecitationType($recitationTypeName);
+    $recitationTypeNameArabic  = $this->input->post('recitationTypeNameArabic',TRUE);
+    $recitationTypeNameFrench  = $this->input->post('recitationTypeNameFrench',TRUE);
+    $result = $this->quran_recitationtype_model->insertRecitationType($recitationTypeName, $recitationTypeNameArabic, $recitationTypeNameFrench);
     echo $result;
   }
   function updateRecitationType(){
     $recitationTypeId  = $this->input->post('recitationTypeId',TRUE);
     $recitationTypeName  = $this->input->post('recitationTypeName',TRUE);
+    $recitationTypeNameArabic  = $this->input->post('recitationTypeNameArabic',TRUE);
+    $recitationTypeNameFrench  = $this->input->post('recitationTypeNameFrench',TRUE);
     $status  = $this->input->post('status',TRUE);
-    $result = $this->quran_recitationtype_model->updateRecitationTypeDetails($recitationTypeId,$recitationTypeName,$status);
+    $result = $this->quran_recitationtype_model->updateRecitationTypeDetails($recitationTypeId,$recitationTypeName,$recitationTypeNameArabic,$recitationTypeNameFrench,$status);
     echo $result;
   }
 }

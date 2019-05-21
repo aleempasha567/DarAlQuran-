@@ -6,14 +6,18 @@ class Quran_recitationtype_model extends CI_Model{
     return $result->result();
   }
 
-  function insertRecitationType($recitationTypeName) {
+  function insertRecitationType($recitationTypeName, $recitationTypeNameArabic, $recitationTypeNameFrench) {
     $this->db->set('recitation_type_name', $recitationTypeName);
+    $this->db->set('recitation_type_name_arabic', $recitationTypeNameArabic);
+    $this->db->set('recitation_type_name_french', $recitationTypeNameFrench);
     $this->db->insert('tbl_quran_recitation_type');
     return true;
   }
-  function updateRecitationTypeDetails($recitationTypeId,$recitationTypeName,$status) {
+  function updateRecitationTypeDetails($recitationTypeId,$recitationTypeName,$recitationTypeNameArabic,$recitationTypeNameFrench,$status) {
     $data=array('last_updated'=>date('Y-m-d H:i:s'));
     $this->db->set('recitation_type_name', $recitationTypeName);
+    $this->db->set('recitation_type_name_arabic', $recitationTypeNameArabic);
+    $this->db->set('recitation_type_name_french', $recitationTypeNameFrench);
     $this->db->set('status', $status);
     $this->db->where('id',$recitationTypeId);
     $this->db->update('tbl_quran_recitation_type',$data);

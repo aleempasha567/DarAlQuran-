@@ -18,14 +18,18 @@ class Quranriways extends CI_Controller{
 
   function addRiwaya(){
     $riwayaName  = $this->input->post('riwayaName',TRUE);
-    $result = $this->quran_riways_model->insertReciter($riwayaName);
+    $riwayaNameArabic  = $this->input->post('riwayaNameArabic',TRUE);
+    $riwayaNameFrench  = $this->input->post('riwayaNameFrench',TRUE);
+    $result = $this->quran_riways_model->insertReciter($riwayaName,$riwayaNameArabic,$riwayaNameFrench);
     echo $result;
   }
   function updateRiwaya(){
     $riwayaId  = $this->input->post('riwayaId',TRUE);
     $riwayaName  = $this->input->post('riwayaName',TRUE);
+    $riwayaNameArabic  = $this->input->post('riwayaNameArabic',TRUE);
+    $riwayaNameFrench  = $this->input->post('riwayaNameFrench',TRUE);
     $status  = $this->input->post('status',TRUE);
-    $result = $this->quran_riways_model->updateReciterDetails($riwayaId,$riwayaName,$status);
+    $result = $this->quran_riways_model->updateReciterDetails($riwayaId,$riwayaName,$riwayaNameArabic,$riwayaNameFrench,$status);
     echo $result;
   }
 }

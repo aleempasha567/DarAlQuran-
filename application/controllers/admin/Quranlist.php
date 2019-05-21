@@ -42,9 +42,12 @@ class Quranlist extends CI_Controller{
     $reciterId  = $this->input->post('reciterId',TRUE);
     $recitationTypeId  = $this->input->post('recitationTypeId',TRUE);
     $riwayasId  = $this->input->post('riwayasId',TRUE);
+    $surahName  = $this->input->post('surahName',TRUE);
+    $surahNameArabic  = $this->input->post('surahNameArabic',TRUE);
+    $surahNameFrench  = $this->input->post('surahNameFrench',TRUE);
     $description  = $this->input->post('description',TRUE);
     $aduioUrl  = $this->input->post('aduioUrl',TRUE);
-    $result = $this->quran_list_model->insertQuranListType($reciterId,$recitationTypeId,$riwayasId,$description,$aduioUrl);
+    $result = $this->quran_list_model->insertQuranListType($reciterId,$recitationTypeId,$riwayasId,$surahName,$surahNameArabic,$surahNameFrench,$description,$aduioUrl);
     echo $result;
   }
   function updateQuranList(){
@@ -52,10 +55,13 @@ class Quranlist extends CI_Controller{
     $reciterId  = $this->input->post('reciterId',TRUE);
     $recitationTypeId  = $this->input->post('recitationTypeId',TRUE);
     $riwayasId  = $this->input->post('riwayasId',TRUE);
+    $surahName  = $this->input->post('surahName',TRUE);
+    $surahNameArabic  = $this->input->post('surahNameArabic',TRUE);
+    $surahNameFrench  = $this->input->post('surahNameFrench',TRUE);
     $description  = $this->input->post('description',TRUE);
     $aduioUrl  = $this->input->post('aduioUrl',TRUE);
     $status  = $this->input->post('status',TRUE);
-    $result = $this->quran_list_model->updateQuranListDetails($quranTypeId,$reciterId,$recitationTypeId,$riwayasId,$description,$aduioUrl,$status);
+    $result = $this->quran_list_model->updateQuranListDetails($quranTypeId,$reciterId,$recitationTypeId,$riwayasId,$surahName,$surahNameArabic,$surahNameFrench,$description,$aduioUrl,$status);
     echo $result;
   }
 }

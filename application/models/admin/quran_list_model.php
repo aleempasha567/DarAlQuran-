@@ -36,20 +36,26 @@ class Quran_list_model extends CI_Model{
     return $result->result();
   }
 
-  function insertQuranListType($reciterId,$recitationTypeId,$riwayasId,$description,$aduioUrl) {
+  function insertQuranListType($reciterId,$recitationTypeId,$riwayasId,$surahName,$surahNameArabic,$surahNameFrench,$description,$aduioUrl) {
     $this->db->set('reciter_id', $reciterId);
     $this->db->set('recitation_type_id', $recitationTypeId);
     $this->db->set('riwaya_id', $riwayasId);
+    $this->db->set('surah_name', $surahName);
+    $this->db->set('surah_name_arabic', $surahNameArabic);
+    $this->db->set('surah_name_french', $surahNameFrench);
     $this->db->set('description', $description);
     $this->db->set('url', $aduioUrl);
     $this->db->insert('tbl_quran');
     return true;
   }
-  function updateQuranListDetails($quranTypeId,$reciterId,$recitationTypeId,$riwayasId,$description,$aduioUrl,$status) {
+  function updateQuranListDetails($quranTypeId,$reciterId,$recitationTypeId,$riwayasId,$surahName,$surahNameArabic,$surahNameFrench,$description,$aduioUrl,$status) {
     $data=array('last_updated'=>date('Y-m-d H:i:s'));
     $this->db->set('reciter_id', $reciterId);
     $this->db->set('recitation_type_id', $recitationTypeId);
     $this->db->set('riwaya_id', $riwayasId);
+    $this->db->set('surah_name', $surahName);
+    $this->db->set('surah_name_arabic', $surahNameArabic);
+    $this->db->set('surah_name_french', $surahNameFrench);
     $this->db->set('description', $description);
     $this->db->set('url', $aduioUrl);
     $this->db->set('status', $status);

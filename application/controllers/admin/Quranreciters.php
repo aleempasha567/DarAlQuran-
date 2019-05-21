@@ -18,14 +18,18 @@ class Quranreciters extends CI_Controller{
 
   function addReciter(){
     $reciterName  = $this->input->post('reciterName',TRUE);
-    $result = $this->quran_reciter_model->insertReciter($reciterName);
+    $reciterNameArabic  = $this->input->post('reciterNameArabic',TRUE);
+    $reciterNameFrench  = $this->input->post('reciterNameFrench',TRUE);
+    $result = $this->quran_reciter_model->insertReciter($reciterName, $reciterNameArabic, $reciterNameFrench);
     echo $result;
   }
   function updateReciter(){
     $reciterId  = $this->input->post('reciterId',TRUE);
     $reciterName  = $this->input->post('reciterName',TRUE);
+    $reciterNameArabic  = $this->input->post('reciterNameArabic',TRUE);
+    $reciterNameFrench  = $this->input->post('reciterNameFrench',TRUE);
     $status  = $this->input->post('status',TRUE);
-    $result = $this->quran_reciter_model->updateReciterDetails($reciterId,$reciterName,$status);
+    $result = $this->quran_reciter_model->updateReciterDetails($reciterId,$reciterName, $reciterNameArabic, $reciterNameFrench, $status);
     echo $result;
   }
 }

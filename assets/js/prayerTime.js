@@ -1,14 +1,13 @@
 $(document).ready(function () {
   $('#prayerTimings').hide();
-  getLocation();
-});
-function getLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition, showError);
-  } else {
-    alert('Geolocation is not supported by this browser.');
   }
-}
+  else {
+    alert('Geolocation is not supported for this Browser/OS.');
+  }
+});
+
 
 function showPosition(position) {
   var lat = position.coords.latitude;

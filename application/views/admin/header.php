@@ -7,8 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="<?php echo base_url('assets/css/bootstrap.min.css');?>" rel="stylesheet">
   <link href="<?php echo base_url('assets/css/main.css');?>" rel="stylesheet">
-  <script src="<?php echo base_url('assets/js/jquery-3.3.1.js');?>"
-    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+  <script src="<?php echo base_url('assets/js/jquery-3.3.1.js');?>"></script>
   <script src="<?php echo base_url('assets/js/bootstrap.min.js');?>"></script>
 </head>
 

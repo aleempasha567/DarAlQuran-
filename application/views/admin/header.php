@@ -56,8 +56,8 @@
               FATWA
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="#">The Mufti</a>
-              <a class="dropdown-item" href="#">Categories</a>
+              <a class="dropdown-item" href="<?php echo site_url('admin/muftinames');?>">The Mufti</a>
+              <a class="dropdown-item" href="<?php echo site_url('admin/fatawacategories');?>">Categories</a>
             </div>
           </li>
           <li class="nav-item dropdown">

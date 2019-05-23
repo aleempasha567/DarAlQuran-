@@ -6,7 +6,7 @@
       <div class="top-header col-md-12">
         <div class="threesecs">
           <div class="col-md-3 col-xs-3 menu-icon">
-            <i class="fa fa-bars" onclick="openNav()" style="font-size:38px;color:#c8ae77;margin-top: -11%;"></i>
+            <i class="fa fa-bars" id="sideNav"></i>
           </div>
 
           <div class="col-md-offset-3 col-md-2 col-xs-9 logosec">

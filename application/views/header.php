@@ -9,6 +9,7 @@
   <script src="<?php echo base_url('assets/js/jquery-3.3.1.js');?>"></script>
   <script src="<?php echo base_url('assets/js/v3/bootstrap.min.js');?>"></script>
   <link href="<?php echo base_url('assets/css/font-awesome.min.css');?>" rel="stylesheet">
+  <link href="<?php echo base_url('assets/css/sidenav.css');?>" rel="stylesheet">
 </head>
 
 <body>

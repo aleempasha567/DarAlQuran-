@@ -1,5 +1,5 @@
 <div id="mySidenav" class="sidenav">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="javascript:void(0)" class="closebtn">&times;</a>
   <a href="#">The Holy Quran<img src="<?php echo base_url('assets/images/icons/1.png');?>" class="menu-icon"></a>
   <a href="#">The Holy Quran<img src="<?php echo base_url('assets/images/icons/2.png');?>" class="menu-icon"></a>
   <a href="#">The Holy Quran<img src="<?php echo base_url('assets/images/icons/3.png');?>" class="menu-icon"></a>
@@ -16,10 +16,13 @@
   <a href="#">The Holy Quran<img src="<?php echo base_url('assets/images/icons/14.png');?>" class="menu-icon"></a>
 </div>
 <script>
-function openNav() {
-  document.getElementById("mySidenav").style.width = "25%";
-}
-function closeNav() {
-  document.getElementById("mySidenav").style.width = "0";
-}
+  $(document).ready(function() {
+    $('#sideNav').on('click',function() {
+      $('#mySidenav').toggleClass("active");
+    });
+    $('html').click(function (e) {
+      if (e.target.id != 'sideNav')
+        $('#mySidenav').removeClass('active');
+    });
+  });
 </script>

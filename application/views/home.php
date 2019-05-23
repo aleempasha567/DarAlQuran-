@@ -8,7 +8,7 @@
         </form>
       </div>
       <div class="col-md-3 col-xs-3 menu-icon">
-        <i class="fa fa-bars" style="font-size:38px;color:#c8ae77;margin-top: -11%;"></i>
+        <i class="fa fa-bars" id="sideNav"></i>
       </div>
       <div class="col-md-5 col-xs-9 logosec">
         <img src="<?php echo base_url('assets/images/al-quran-logo.png');?>" class="img-responsive pull-right" />

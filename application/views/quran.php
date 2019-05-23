@@ -49,13 +49,13 @@
   <div class="dropdown-section">
     <div class="col-md-4">
       <div class="select">
-        <select name="slct" id="slct">
-          <option>تحديد</option>
+        <select name="slct" id="dropdown1">
+          <option value="">تحديد</option>
           <?php
         foreach ($riways as $row)
         {
         ?>
-          <option value="<?php echo $row->id; ?>"><?php echo $row->riwaya_name_arabic; ?></option>
+          <option value="<?php echo $row->riwaya_name_arabic; ?>"><?php echo $row->riwaya_name_arabic; ?></option>
           <?php } ?>
         </select>
       </div>
@@ -66,13 +66,13 @@
 
     <div class="col-md-4">
       <div class="select">
-        <select name="slct" id="slct">
-          <option>تحديد</option>
+        <select name="slct" id="dropdown2">
+          <option value="">تحديد</option>
           <?php
           foreach ($recitationTypes as $row)
           {
           ?>
-          <option value="<?php echo $row->id; ?>"><?php echo $row->recitation_type_name_arabic; ?></option>
+          <option value="<?php echo $row->recitation_type_name_arabic; ?>"><?php echo $row->recitation_type_name_arabic; ?></option>
           <?php } ?>
         </select>
       </div>
@@ -84,13 +84,13 @@
 
     <div class="col-md-4">
       <div class="select">
-        <select name="slct" id="slct">
-          <option>تحديد</option>
+        <select name="slct" id="dropdown3">
+          <option value="">تحديد</option>
           <?php
             foreach ($reciters as $row)
             {
           ?>
-          <option value="<?php echo $row->id; ?>"><?php echo $row->reciter_name_arabic; ?></option>
+          <option value="<?php echo $row->reciter_name_arabic; ?>"><?php echo $row->reciter_name_arabic; ?></option>
           <?php } ?>
         </select>
       </div>
@@ -148,6 +148,15 @@
 <script src="<?php echo base_url('assets/js/v3/dataTables.bootstrap.min.js');?>"></script>
 <script>
 $(document).ready(function() {
-  $('#example').DataTable();
+    var table =  $('#example').DataTable();
+    $('#dropdown1').on('change', function () {
+      table.columns(0).search( this.value ).draw();
+    });
+    $('#dropdown2').on('change', function () {
+      table.columns(1).search( this.value ).draw();
+    });
+    $('#dropdown3').on('change', function () {
+      table.columns(2).search( this.value ).draw();
+    });
 });
 </script>

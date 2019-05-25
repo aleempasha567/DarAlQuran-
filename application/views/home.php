@@ -11,7 +11,9 @@
         <i class="fa fa-bars" id="sideNav"></i>
       </div>
       <div class="col-md-5 col-xs-9 logosec">
-        <img src="<?php echo base_url('assets/images/al-quran-logo.png');?>" class="img-responsive pull-right" />
+        <a href="<?php echo base_url(); ?>">
+          <img src="<?php echo base_url('assets/images/al-quran-logo.png'); ?>" class="img-responsive pull-right" />
+        </a>
       </div>
     </div>
     <div class="content">
@@ -19,7 +21,7 @@
       <button>عند الدار </button>
     </div>
     <div class="inner-banner">
-      <img src="<?php echo base_url('assets/images/mann.png');?>" class="img-responsive" />
+      <img src="<?php echo base_url('assets/images/mann.png'); ?>" class="img-responsive" />
     </div>
     <div class="outer-content">
       <h2>من نحن </h2>
@@ -52,93 +54,93 @@
 <div class="row mid-icon-section">
   <div class="col-md-offset-1 col-lg-offset-1 col-md-2 col-lg-2 col-sm-4 col-xs-6">
     <div class="iconic-content">
-      <div class="mid-icon"> <img src="<?php echo base_url('assets/images/1.png');?>" class="img-responsive" /> </div>
+      <div class="mid-icon"> <img src="<?php echo base_url('assets/images/1-1.png'); ?>" class="img-responsive" /> </div>
       <p>الدروس والمحاضرات المسموعة</p>
     </div>
   </div>
   <div class="col-md-2 col-lg-2 col-sm-4 col-xs-6">
-    <a href="<?php echo site_url('quran');?>">
+    <a href="<?php echo site_url('quran'); ?>">
       <div class="iconic-content">
-        <div class="mid-icon"> <img src="<?php echo base_url('assets/images/2.png');?>" class="img-responsive" /> </div>
+        <div class="mid-icon"> <img src="<?php echo base_url('assets/images/2-1.png'); ?>" class="img-responsive" /> </div>
         <p>القرآن الكريم</p>
       </div>
-      <a>
+    </a>
   </div>
   <div class="col-md-2 col-lg-2 col-sm-4 col-xs-6">
     <div class="iconic-content">
-      <div class="mid-icon"> <img src="<?php echo base_url('assets/images/3.png');?>" class="img-responsive" /> </div>
+      <div class="mid-icon"> <img src="<?php echo base_url('assets/images/3-1.png'); ?>" class="img-responsive" /> </div>
       <p>البث المباشر</p>
     </div>
   </div>
   <div class="col-md-2 col-lg-2 col-sm-4 col-xs-6">
     <div class="iconic-content">
-      <div class="mid-icon"> <img src="<?php echo base_url('assets/images/4.png');?>" class="img-responsive" /> </div>
+      <div class="mid-icon"> <img src="<?php echo base_url('assets/images/4-1.png'); ?>" class="img-responsive" /> </div>
       <p>إذاعة دار القرآن</p>
     </div>
   </div>
   <div class="col-md-2 col-lg-2 col-sm-4 col-xs-6">
     <div class="iconic-content">
-      <div class="mid-icon"> <img src="<?php echo base_url('assets/images/5.png');?>" class="img-responsive" /> </div>
+      <div class="mid-icon"> <img src="<?php echo base_url('assets/images/5-1.png'); ?>" class="img-responsive" /> </div>
       <p>المنتديات</p>
     </div>
   </div>
   <div class="col-md-offset-1 col-lg-offset-1 col-md-2 col-lg-2 col-sm-4 col-xs-6">
     <div class="iconic-content">
-      <div class="mid-icon"> <img src="<?php echo base_url('assets/images/6.png');?>" class="img-responsive" /> </div>
+      <div class="mid-icon"> <img src="<?php echo base_url('assets/images/6-1.png'); ?>" class="img-responsive" /> </div>
       <p>الفتاوى الشرعية</p>
     </div>
   </div>
   <div class="col-md-2 col-lg-2 col-sm-4 col-xs-6">
     <div class="iconic-content">
-      <div class="mid-icon"> <img src="<?php echo base_url('assets/images/7.png');?>" class="img-responsive" /> </div>
+      <div class="mid-icon"> <img src="<?php echo base_url('assets/images/7-1.png'); ?>" class="img-responsive" /> </div>
       <p>الردود والمقالات</p>
     </div>
   </div>
   <div class="col-md-2 col-lg-2 col-sm-4 col-xs-6">
     <div class="iconic-content">
-      <div class="mid-icon"> <img src="<?php echo base_url('assets/images/8.png');?>" class="img-responsive" /> </div>
+      <div class="mid-icon"> <img src="<?php echo base_url('assets/images/8-1.png'); ?>" class="img-responsive" /> </div>
       <p>المخطوطات</p>
     </div>
   </div>
   <div class="col-md-2 col-lg-2 col-sm-4 col-xs-6">
     <div class="iconic-content">
-      <div class="mid-icon"> <img src="<?php echo base_url('assets/images/9.png');?>" class="img-responsive" /> </div>
+      <div class="mid-icon"> <img src="<?php echo base_url('assets/images/9-1.png'); ?>" class="img-responsive" /> </div>
       <p>الكتب</p>
     </div>
   </div>
   <div class="col-md-2 col-lg-2 col-sm-4 col-xs-6">
     <div class="iconic-content">
-      <div class="mid-icon"> <img src="<?php echo base_url('assets/images/10.png');?>" class="img-responsive" /> </div>
+      <div class="mid-icon"> <img src="<?php echo base_url('assets/images/10-1.png'); ?>" class="img-responsive" /> </div>
       <p>الدروس والمحاضرات المرئية</p>
     </div>
   </div>
   <div class="col-md-offset-1 col-lg-offset-1 col-md-2 col-lg-2 col-sm-4 col-xs-6">
     <div class="iconic-content">
-      <div class="mid-icon"> <img src="<?php echo base_url('assets/images/11.png');?>" class="img-responsive" /> </div>
+      <div class="mid-icon"> <img src="<?php echo base_url('assets/images/11-1.png'); ?>" class="img-responsive" /> </div>
       <p>أخرى</p>
     </div>
   </div>
   <div class="col-md-2 col-lg-2 col-sm-4 col-xs-6">
     <div class="iconic-content">
-      <div class="mid-icon"> <img src="<?php echo base_url('assets/images/12.png');?>" class="img-responsive" /> </div>
-      <p>بوابة المقارىء الالكترونية</p>
+      <div class="mid-icon"> <img src="<?php echo base_url('assets/images/12-1.png'); ?>" class="img-responsive" /> </div>
+      <p class="thick">بوابة المقارىء الالكترونية</p>
     </div>
   </div>
   <div class="col-md-2 col-lg-2 col-sm-4 col-xs-6">
     <div class="iconic-content">
-      <div class="mid-icon"> <img src="<?php echo base_url('assets/images/13.png');?>" class="img-responsive" /> </div>
+      <div class="mid-icon"> <img src="<?php echo base_url('assets/images/13-1.png'); ?>" class="img-responsive" /> </div>
       <p>بوابات المعاهد الالكترونية</p>
     </div>
   </div>
   <div class="col-md-2 col-lg-2 col-sm-4 col-xs-6">
     <div class="iconic-content">
-      <div class="mid-icon"> <img src="<?php echo base_url('assets/images/14.png');?>" class="img-responsive" /> </div>
+      <div class="mid-icon"> <img src="<?php echo base_url('assets/images/14-1.png'); ?>" class="img-responsive" /> </div>
       <p>خدمات الموقع</p>
     </div>
   </div>
   <div class="col-md-2 col-lg-2 col-sm-4 col-xs-6">
     <div class="iconic-content">
-      <div class="mid-icon"> <img src="<?php echo base_url('assets/images/15.png');?>" class="img-responsive" /> </div>
+      <div class="mid-icon"> <img src="<?php echo base_url('assets/images/15-1.png'); ?>" class="img-responsive" /> </div>
       <p>البرامج الاسلامية</p>
     </div>
   </div>
@@ -146,9 +148,15 @@
 <div class="clearfix"></div>
 <!--Prayer timings section-->
 <div class="prayer-timings-section">
-  <div class="col-sm-6 col-md-6 col-lg-6 prayer-bg">
-    <div class="prayer-image-section"> <img src="<?php echo base_url('assets/images/paryer-image.png');?>"
-        class="img-responsive" /> </div>
+  <div class="col-sm-6 col-md-6 col-lg-6">
+    <div class="prayer-image-section">
+      <!-- img src="<--?php echo base_url('assets/images/paryer-image.png');?>"
+        class="img-responsive" / -->
+
+      <img width="920" height="762" src="<?php echo base_url('assets/images/prayingkids.png'); ?>" class="img-responsive" alt="" srcset="<?php echo base_url('assets/images/prayingkids.png'); ?> 920w, <?php echo base_url('assets/images/prayingkids-300x248.png'); ?> 300w, <?php echo base_url('assets/images/prayingkids-768x636.png'); ?> 768w" sizes="(max-width: 920px) 100vw, 920px" data-no-retina="">
+
+
+    </div>
   </div>
   <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 p-5">
     <h1 class="prayer-timings-heading pull-right">أوقات الصلاة</h1>
@@ -186,10 +194,8 @@
       </div>
       <!-- Left and right controls -->
       <div class="carousel-btns">
-        <a class="left carousel-control" href="#myCarousel" data-slide="prev"> <span
-            class="glyphicon glyphicon-chevron-left"></span> <span class="sr-only">Previous</span> </a>
-        <a class="right carousel-control" href="#myCarousel" data-slide="next"> <span
-            class="glyphicon glyphicon-chevron-right"></span> <span class="sr-only">Next</span> </a>
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"></span> <span class="sr-only">Previous</span> </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next"> <span class="glyphicon glyphicon-chevron-right"></span> <span class="sr-only">Next</span> </a>
       </div>
     </div>
   </div>
@@ -200,11 +206,11 @@
   <div class="col-md-6 col-lg-6 col-sm-6">
     <h1 class="heading">مكتبة صوتية جديدة </h1>
     <div class="player" style="margin: 5% 0%;">
-      <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay"
-        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/615551937&color=%23000000&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+      <iframe width="100%" height="400" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/785886528%3Fsecret_token%3Ds-jVnlL&color=%2371471e&auto_play=true&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=false"></iframe>
+
     </div>
     <table class="table">
-      <tbody>
+      <!--  <tbody>
         <tr>
           <td>1</td>
           <td>
@@ -237,11 +243,10 @@
           <td>The opener</td>
           <td><strong>Al-Fatihah</strong></td>
         </tr>
-      </tbody>
+      </tbody>-->
     </table>
   </div>
-  <div class="col-md-6 col-lg-6 col-sm-6"> <img src="<?php echo base_url('assets/images/phone-with-logo.jpg');?>"
-      class="img-responsive" /> </div>
+  <div class="col-md-6 col-lg-6 col-sm-6"> <img src="<?php echo base_url('assets/images/phone-with-logo.jpg'); ?>" class="img-responsive" /> </div>
 </div>
-<link href="<?php echo base_url('assets/css/style.css');?>" rel="stylesheet">
-<script src="<?php echo base_url('assets/js/prayerTime.js');?>"></script>
+<link href="<?php echo base_url('assets/css/style.css'); ?>" rel="stylesheet">
+<script src="<?php echo base_url('assets/js/prayerTime.js'); ?>"></script>

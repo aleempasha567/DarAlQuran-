@@ -776,7 +776,6 @@ select::-ms-expand {
 /*scroller css articles*/
 
 .article-main-content {
-
 	background-image: url("../images/background_pattern.png");
 	background-repeat: no-repeat;
 }
@@ -906,7 +905,7 @@ select::-ms-expand {
 	display: flex;
 	position: absolute;
 	top: 0;
-  right: 6%;
+	right: 6%;
 	background-image: url("../images/tab.png");
 	background-size: 100%;
 	background-repeat: no-repeat;
@@ -1079,4 +1078,7 @@ select::-ms-expand {
 	color: white;
 }
 
+#example tr {
+	cursor: pointer;
+}
 /*lastone css ends*/

@@ -1,4 +1,4 @@
-<link href="<?php echo base_url('assets/css/dataTables.bootstrap4.min.css');?>" rel="stylesheet">
+<link href="<?php echo base_url('assets/css/dataTables.bootstrap4.min.css'); ?>" rel="stylesheet">
 <main role="main" class="container">
   <div class="alert alert-dark table_header">
     <h5>List Of Files In Quran</h5>
@@ -32,50 +32,46 @@
       </thead>
       <tbody>
         <?php
-        $i=1;
-        foreach ($quranList as $row)
-        {
-        ?>
-        <tr id="<?php echo $row->id.
-			'_'.$row->reciter_id.
-			'_'.$row->recitation_type_id.
-			'_'.$row->riwaya_id.
-			'_'.$row->surah_name.
-			'_'.$row->surah_name_arabic.
-			'_'.$row->surah_name_french.
-			'_'.$row->url.
-			'_'.$row->status.
-			'_'.$row->description
-			;?>">
-          <td><?php echo $i;?></td>
-          <td><?php echo $row->reciter_name;?></td>
-          <td><?php echo $row->recitation_type_name;?></td>
-          <td><?php echo $row->riwaya_name;?></td>
-          <td><?php echo $row->surah_name;?></td>
-          <td><?php echo $row->surah_name_arabic;?></td>
-          <td><?php echo $row->surah_name_french;?></td>
-          <td><?php echo $row->url;?></td>
-          <td><?php echo $row->date_time;?></td>
-          <td><?php if($row->status) echo 'Active'; else echo 'In-Active'?></td>
-          <td><?php echo $row->description;?></td>
-          <td>
-            <button type="button" class="btn btn-info btn-sm editRow" data-toggle="modal"
-              data-target="#exampleModalCenter1">Edit</button>
-            <button type="button" class="btn btn-success btn-sm playRow" data-toggle="modal"
-              data-target="#exampleModalCenter2">Play</button>
-          </td>
+        $i = 1;
+        foreach ($quranList as $row) {
+          ?>
+          <tr id="<?php echo $row->id .
+                    '_' . $row->reciter_id .
+                    '_' . $row->recitation_type_id .
+                    '_' . $row->riwaya_id .
+                    '_' . $row->surah_name .
+                    '_' . $row->surah_name_arabic .
+                    '_' . $row->surah_name_french .
+                    '_' . $row->url .
+                    '_' . $row->status .
+                    '_' . $row->description; ?>">
+            <td><?php echo $i; ?></td>
+            <td><?php echo $row->reciter_name; ?></td>
+            <td><?php echo $row->recitation_type_name; ?></td>
+            <td><?php echo $row->riwaya_name; ?></td>
+            <td><?php echo $row->surah_name; ?></td>
+            <td><?php echo $row->surah_name_arabic; ?></td>
+            <td><?php echo $row->surah_name_french; ?></td>
+            <td><?php echo $row->url; ?></td>
+            <td><?php echo $row->date_time; ?></td>
+            <td><?php if ($row->status) echo 'Active';
+                else echo 'In-Active' ?></td>
+            <td><?php echo $row->description; ?></td>
+            <td>
+              <button type="button" class="btn btn-info btn-sm editRow" data-toggle="modal" data-target="#exampleModalCenter1">Edit</button>
+              <button type="button" class="btn btn-success btn-sm playRow" data-toggle="modal" data-target="#exampleModalCenter2">Play</button>
+            </td>
 
-        </tr>
-        <?php
-            $i++;
+          </tr>
+          <?php
+          $i++;
         }
         ?>
       </tbody>
     </table>
   </div>
   <!-- Modal -->
-  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-    aria-hidden="true">
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -119,7 +115,7 @@
 
           <div class="form-group">
             <label for="exampleInputAuthorName">Track Code</label>
-            <input type="number" class="form-control" id="aduioUrl" placeholder="Track Code">
+            <input type="text" class="form-control" id="aduioUrl" placeholder="Track Code">
           </div>
           <div class="form-group">
             <label for="exampleFormControlTextarea1">Short Description</label>
@@ -134,8 +130,7 @@
     </div>
   </div>
   <!-- update Model -->
-  <div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-    aria-hidden="true">
+  <div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -177,7 +172,7 @@
 
           <div class="form-group">
             <label for="exampleInputAuthorName">Track Code</label>
-            <input type="number" class="form-control" id="editAduioUrl" placeholder="Track Code">
+            <input type="text" class="form-control" id="editAduioUrl" placeholder="Track Code">
           </div>
 
           <div class="form-group">
@@ -205,8 +200,7 @@
     </div>
   </div>
   <!--  Play Model -->
-  <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-    aria-hidden="true">
+  <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -226,94 +220,94 @@
   </div>
 </main><!-- /.container -->
 <script>
-$(document).ready(function() {
-  var baseURL = '<?php echo base_url(''); ?>';
-  $('#example').DataTable();
-  $.post(baseURL + '/admin/quranlist/getReciters', function(data) {
-    $('#reciter').html(data);
-    $('#editReciter').html(data);
-  });
-  $.post(baseURL + '/admin/quranlist/getRecitationTypes', function(data) {
-    $('#recitationType').html(data);
-    $('#editRecitationType').html(data);
-  });
-  $.post(baseURL + '/admin/quranlist/getRiwayas', function(data) {
-    $('#riwayas').html(data);
-    $('#editRiwayas').html(data);
-  });
-  $('#addToDB').on('click', function() {
-    var data = {
-      "reciterId": $('#reciter').val(),
-      "recitationTypeId": $('#recitationType').val(),
-      "riwayasId": $('#riwayas').val(),
-      "surahName": $('#surahName').val(),
-      "surahNameArabic": $('#surahNameArabic').val(),
-      "surahNameFrench": $('#surahNameFrench').val(),
-      "description": $('#description').val(),
-      "aduioUrl": $('#aduioUrl').val()
-    }
-    $.post(baseURL + '/admin/quranlist/addQuranListType', data, function(data) {
-      if (data) {
-        alert('Data Added Sucessfully');
-        location.reload();
+  $(document).ready(function() {
+    var baseURL = '<?php echo base_url(''); ?>';
+    $('#example').DataTable();
+    $.post(baseURL + '/admin/quranlist/getReciters', function(data) {
+      $('#reciter').html(data);
+      $('#editReciter').html(data);
+    });
+    $.post(baseURL + '/admin/quranlist/getRecitationTypes', function(data) {
+      $('#recitationType').html(data);
+      $('#editRecitationType').html(data);
+    });
+    $.post(baseURL + '/admin/quranlist/getRiwayas', function(data) {
+      $('#riwayas').html(data);
+      $('#editRiwayas').html(data);
+    });
+    $('#addToDB').on('click', function() {
+      var data = {
+        "reciterId": $('#reciter').val(),
+        "recitationTypeId": $('#recitationType').val(),
+        "riwayasId": $('#riwayas').val(),
+        "surahName": $('#surahName').val(),
+        "surahNameArabic": $('#surahNameArabic').val(),
+        "surahNameFrench": $('#surahNameFrench').val(),
+        "description": $('#description').val(),
+        "aduioUrl": $('#aduioUrl').val()
       }
-    })
-  });
-  $('.editRow').on('click', function() {
-    var quranListDetails = $(this).parents('tr').attr('id');
-    var res = quranListDetails.split('_');
-    $('#rowId').val(res[0]);
-    $('#editReciter').val(res[1]);
-    $('#editRecitationType').val(res[2]);
-    $('#editRiwayas').val(res[3]);
-    $('#editSurahName').val(res[4]);
-    $('#editSurahNameArabic').val(res[5]);
-    $('#editSurahNameFrench').val(res[6]);
+      $.post(baseURL + '/admin/quranlist/addQuranListType', data, function(data) {
+        if (data) {
+          alert('Data Added Sucessfully');
+          location.reload();
+        }
+      })
+    });
+    $('.editRow').on('click', function() {
+      var quranListDetails = $(this).parents('tr').attr('id');
+      var res = quranListDetails.split('_');
+      $('#rowId').val(res[0]);
+      $('#editReciter').val(res[1]);
+      $('#editRecitationType').val(res[2]);
+      $('#editRiwayas').val(res[3]);
+      $('#editSurahName').val(res[4]);
+      $('#editSurahNameArabic').val(res[5]);
+      $('#editSurahNameFrench').val(res[6]);
 
-    $('#editAduioUrl').val(res[7]);
-    if (res[8] == '1')
-      $("#customRadio").prop("checked", true);
-    else
-      $("#customRadio2").prop("checked", true);
-    $('#editDescription').val(res[9]);
-  });
-  $('#updateToDB').on('click', function() {
-    var data = {
-      "quranTypeId": $('#rowId').val(),
-      "reciterId": $('#editReciter').val(),
-      "recitationTypeId": $('#editRecitationType').val(),
-      "riwayasId": $('#editRiwayas').val(),
-      "surahName": $('#editSurahName').val(),
-      "surahNameArabic": $('#editSurahNameArabic').val(),
-      "surahNameFrench": $('#editSurahNameFrench').val(),
-      "description": $('#editDescription').val(),
-      "aduioUrl": $('#editAduioUrl').val(),
-      "status": $("input[name='status']:checked").val()
-    }
-    $.post(baseURL + '/admin/quranlist/updateQuranList', data, function(data) {
-      if (data) {
-        alert('Details Updated Sucessfully');
-        location.reload();
+      $('#editAduioUrl').val(res[7]);
+      if (res[8] == '1')
+        $("#customRadio").prop("checked", true);
+      else
+        $("#customRadio2").prop("checked", true);
+      $('#editDescription').val(res[9]);
+    });
+    $('#updateToDB').on('click', function() {
+      var data = {
+        "quranTypeId": $('#rowId').val(),
+        "reciterId": $('#editReciter').val(),
+        "recitationTypeId": $('#editRecitationType').val(),
+        "riwayasId": $('#editRiwayas').val(),
+        "surahName": $('#editSurahName').val(),
+        "surahNameArabic": $('#editSurahNameArabic').val(),
+        "surahNameFrench": $('#editSurahNameFrench').val(),
+        "description": $('#editDescription').val(),
+        "aduioUrl": $('#editAduioUrl').val(),
+        "status": $("input[name='status']:checked").val()
       }
-    })
+      $.post(baseURL + '/admin/quranlist/updateQuranList', data, function(data) {
+        if (data) {
+          alert('Details Updated Sucessfully');
+          location.reload();
+        }
+      })
+    });
+    $('.playRow').on('click', function() {
+      var quranListDetails = $(this).parents('tr').attr('id');
+      var res = quranListDetails.split('_');
+      var iframeCode =
+        '<iframe width="100%" height="100" scrolling="no" frameborder="yes" allow="autoplay" src="https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/';
+      iframeCode += res[7];
+      iframeCode +=
+        '?secret_token=s-QzwIV&color=#ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>';
+      $('#exampleModalCenter2').find('.modal-body').html(iframeCode);
+    });
+    $('#exampleModalCenter2').on('hidden.bs.modal', function() {
+      $(this).find('.modal-body').html('');
+    });
+    $('#audioPopupClose').on('click', function() {
+      $('#exampleModalCenter2').find('.modal-body').html('');
+    });
   });
-  $('.playRow').on('click', function() {
-    var quranListDetails = $(this).parents('tr').attr('id');
-    var res = quranListDetails.split('_');
-    var iframeCode =
-      '<iframe width="100%" height="100" scrolling="no" frameborder="yes" allow="autoplay" src="https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/';
-    iframeCode += res[7];
-    iframeCode +=
-      '?secret_token=s-QzwIV&color=#ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>';
-    $('#exampleModalCenter2').find('.modal-body').html(iframeCode);
-  });
-  $('#exampleModalCenter2').on('hidden.bs.modal', function() {
-    $(this).find('.modal-body').html('');
-  });
-  $('#audioPopupClose').on('click', function() {
-    $('#exampleModalCenter2').find('.modal-body').html('');
-  });
-});
 </script>
-<script src="<?php echo base_url('assets/js/jquery.dataTables.min.js"');?>"></script>
-<script src="<?php echo base_url('assets/js/dataTables.bootstrap4.min.js');?>"></script>
+<script src="<?php echo base_url('assets/js/jquery.dataTables.min.js"'); ?>"></script>
+<script src="<?php echo base_url('assets/js/dataTables.bootstrap4.min.js'); ?>"></script>

@@ -124,12 +124,12 @@ input {
 }*/
 
 .mid-icon-section {
-    padding-bottom: 0;
+	padding-bottom: 0;
 }
 
 .iconic-content p {
 	text-align: center;
-	font-weight: bold;
+	font-weight: 900;
 	font-family: cursive;
 	color: #b18827;
 }
@@ -138,8 +138,8 @@ input {
 }
 
 #search {
-    text-align: right;
-    padding-right: 10px;
+	text-align: right;
+	padding-right: 10px;
 }
 
 .prayer-bg {

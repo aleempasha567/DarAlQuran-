@@ -10,12 +10,13 @@
 	overflow-x: hidden;
 	transition: 0.5s;
 	padding-top: 60px;
-  z-index: 9999;
+	z-index: 9999;
 	background-image: url("../images/background-banner.jpg");
 }
 
 .sidenav a {
 	padding: 8px 8px 8px 32px;
+	text-align: right;
 	text-decoration: none;
 	font-size: 18px;
 	color: #c8ad78;
@@ -41,8 +42,8 @@
 }
 
 #sideNav {
-	font-size:38px;
-	color:#c8ae77;
+	font-size: 38px;
+	color: #c8ae77;
 	margin-top: -11%;
 }
 

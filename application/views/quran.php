@@ -154,7 +154,11 @@
 <script src="<?php echo base_url('assets/js/v3/dataTables.bootstrap.min.js'); ?>"></script>
 <script>
   $(document).ready(function() {
-    var table = $('#example').DataTable();
+    var table = $('#example').DataTable({
+      "language": {
+        "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Arabic.json"
+      }
+    });
     $('#dropdown1').on('change', function() {
       table.columns(0).search(this.value).draw();
     });

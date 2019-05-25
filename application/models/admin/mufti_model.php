@@ -1,26 +1,30 @@
 <?php
-class Mufti_model extends CI_Model{
+class Mufti_model extends CI_Model
+{
 
-  function getAllMufties(){
+  function getAllMufties()
+  {
     $result = $this->db->get('tbl_mufti_names');
     return $result->result();
   }
 
-  function insertMufti($muftiName, $muftiNameArabic, $muftiNameFrench) {
+  function insertMufti($muftiName, $muftiNameArabic, $muftiNameFrench)
+  {
     $this->db->set('mufti_name', $muftiName);
-	$this->db->set('mufti_name_arabic', $muftiNameArabic);
-	$this->db->set('mufti_name_french', $muftiNameFrench);
+    $this->db->set('mufti_name_arabic', $muftiNameArabic);
+    $this->db->set('mufti_name_french', $muftiNameFrench);
     $this->db->insert('tbl_mufti_names');
     return true;
   }
-  function updateMuftiDetails($muftiId, $muftiName, $muftiNameArabic,  $muftiNameFrench, $status) {
-    $data=array('last_updated'=>date('Y-m-d H:i:s'));
+  function updateMuftiDetails($muftiId, $muftiName, $muftiNameArabic,  $muftiNameFrench, $status)
+  {
+    $data = array('last_updated' => date('Y-m-d H:i:s'));
     $this->db->set('mufti_name', $muftiName);
-	$this->db->set('mufti_name_arabic', $muftiNameArabic);
-	$this->db->set('mufti_name_french', $muftiNameFrench);	
+    $this->db->set('mufti_name_arabic', $muftiNameArabic);
+    $this->db->set('mufti_name_french', $muftiNameFrench);
     $this->db->set('status', $status);
-    $this->db->where('id',$muftiId);
-    $this->db->update('tbl_mufti_names',$data);
+    $this->db->where('id', $muftiId);
+    $this->db->update('tbl_mufti_names', $data);
     return true;
   }
 }

@@ -1,4 +1,4 @@
-<link href="<?php echo base_url('assets/css/dataTables.bootstrap4.min.css');?>" rel="stylesheet">
+<link href="<?php echo base_url('assets/css/dataTables.bootstrap4.min.css'); ?>" rel="stylesheet">
 <main role="main" class="container">
   <div class="alert alert-dark table_header">
     <h5>List Of Category</h5>
@@ -26,38 +26,35 @@
       </thead>
       <tbody>
         <?php
-        $i=1;
+        $i = 1;
 
 
-        foreach ($categoryNames as $row)
-        {
-        ?>
-        <tr
-          id="<?php echo $row->id.'_'.$row->category_name_arabic.'_'.$row->category_name.'_'.$row->category_name_french.'_'.$row->status;?>">
-          <td><?php echo $i;?></td>
-          <td><?php echo $row->category_name;?></td>
-          <td><?php echo $row->category_name_arabic;?></td>
+        foreach ($categoryNames as $row) {
+          ?>
+          <tr id="<?php echo $row->id . '_' . $row->category_name_arabic . '_' . $row->category_name . '_' . $row->category_name_french . '_' . $row->status; ?>">
+            <td><?php echo $i; ?></td>
+            <td><?php echo $row->category_name; ?></td>
+            <td><?php echo $row->category_name_arabic; ?></td>
 
-          <td><?php echo $row->category_name_french;?></td>
-          <td><?php echo $row->date_time;?></td>
-          <td><?php if($row->status) echo 'Active'; else echo 'In-Active'?></td>
-          <td>
-            <button type="button" class="btn btn-info btn-sm editRow" data-toggle="modal"
-              data-target="#exampleModalCenter1">
-              Edit
-            </button>
-          </td>
-        </tr>
-        <?php
-            $i++;
+            <td><?php echo $row->category_name_french; ?></td>
+            <td><?php echo $row->date_time; ?></td>
+            <td><?php if ($row->status) echo 'Active';
+                else echo 'In-Active' ?></td>
+            <td>
+              <button type="button" class="btn btn-info btn-sm editRow" data-toggle="modal" data-target="#exampleModalCenter1">
+                Edit
+              </button>
+            </td>
+          </tr>
+          <?php
+          $i++;
         }
         ?>
       </tbody>
     </table>
   </div>
   <!-- Modal -->
-  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-    aria-hidden="true">
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -86,8 +83,7 @@
     </div>
   </div>
   <!-- update Model -->
-  <div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-    aria-hidden="true">
+  <div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -128,61 +124,61 @@
   </div>
 </main><!-- /.container -->
 <script>
-$(document).ready(function() {
-  var baseURL = '<?php echo base_url(''); ?>';
-  $('#example').DataTable();
-  $('#addToDB').on('click', function() {
+  $(document).ready(function() {
+    var baseURL = '<?php echo base_url(''); ?>';
+    $('#example').DataTable();
+    $('#addToDB').on('click', function() {
 
-    var categoryName = $('#categoryName').val();
-    var categoryNameArabic = $('#categoryNameArabic').val();
-    var categoryNameFrench = $('#categoryNameFrench').val();
+      var categoryName = $('#categoryName').val();
+      var categoryNameArabic = $('#categoryNameArabic').val();
+      var categoryNameFrench = $('#categoryNameFrench').val();
 
-    $.post(baseURL + '/admin/fatawacategories/addFatawaCategoryName', {
-      "categoryName": categoryName,
-      "categoryNameArabic": categoryNameArabic,
-      "categoryNameFrench": categoryNameFrench
-    }, function(data) {
+      $.post(baseURL + '/admin/fatawacategories/addFatawaCategoryName', {
+        "categoryName": categoryName,
+        "categoryNameArabic": categoryNameArabic,
+        "categoryNameFrench": categoryNameFrench
+      }, function(data) {
 
-      if (data) {
-        alert('Category Details Added Sucessfully');
-        location.reload();
-      }
-    })
+        if (data) {
+          alert('Category Details Added Sucessfully');
+          location.reload();
+        }
+      })
+    });
+    $('.editRow').on('click', function() {
+      var categoryDetails = $(this).parents('tr').attr('id');
+      var res = categoryDetails.split('_');
+
+      $('#rowId').val(res[0]);
+      $('#editCategoryNameArabic').val(res[1]);
+      $('#editCategoryName').val(res[2]);
+      $('#editCategoryNameFrench').val(res[3]);
+
+      if (res[4] == '1')
+        $("#customRadio").prop("checked", true);
+      else
+        $("#customRadio2").prop("checked", true);
+    });
+    $('#updateToDB').on('click', function() {
+      var categoryId = $('#rowId').val();
+      var categoryName = $('#editCategoryName').val();
+      var categoryNameArabic = $('#editCategoryNameArabic').val();
+      var categoryNameFrench = $('#editCategoryNameFrench').val();
+      var status = $("input[name='status']:checked").val();
+      $.post(baseURL + '/admin/fatawacategories/updateFatawaCategoryName', {
+        "categoryId": categoryId,
+        'categoryName': categoryName,
+        'categoryNameArabic': categoryNameArabic,
+        'categoryNameFrench': categoryNameFrench,
+        'status': status
+      }, function(data) {
+        if (data) {
+          alert('Category Details Updated Sucessfully');
+          location.reload();
+        }
+      })
+    });
   });
-  $('.editRow').on('click', function() {
-    var categoryDetails = $(this).parents('tr').attr('id');
-    var res = categoryDetails.split('_');
-
-    $('#rowId').val(res[0]);
-    $('#editCategoryNameArabic').val(res[1]);
-    $('#editCategoryName').val(res[2]);
-    $('#editCategoryNameFrench').val(res[3]);
-
-    if (res[4] == '1')
-      $("#customRadio").prop("checked", true);
-    else
-      $("#customRadio2").prop("checked", true);
-  });
-  $('#updateToDB').on('click', function() {
-    var categoryId = $('#rowId').val();
-    var categoryName = $('#editCategoryName').val();
-    var categoryNameArabic = $('#editCategoryNameArabic').val();
-    var categoryNameFrench = $('#editCategoryNameFrench').val();
-    var status = $("input[name='status']:checked").val();
-    $.post(baseURL + '/admin/fatawacategories/updateFatawaCategoryName', {
-      "categoryId": categoryId,
-      'categoryName': categoryName,
-      'categoryNameArabic': categoryNameArabic,
-      'categoryNameFrench': categoryNameFrench,
-      'status': status
-    }, function(data) {
-      if (data) {
-        alert('Category Details Updated Sucessfully');
-        location.reload();
-      }
-    })
-  });
-});
 </script>
-<script src="<?php echo base_url('assets/js/jquery.dataTables.min.js"');?>"></script>
-<script src="<?php echo base_url('assets/js/dataTables.bootstrap4.min.js');?>"></script>
+<script src="<?php echo base_url('assets/js/jquery.dataTables.min.js"'); ?>"></script>
+<script src="<?php echo base_url('assets/js/dataTables.bootstrap4.min.js'); ?>"></script>

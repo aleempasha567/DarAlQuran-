@@ -1,5 +1,5 @@
 <div class="clearfix"></div>
-<div class="footer_banner"> <img src="<?php echo base_url('assets/images/footer-bg.jpg');?>" class="img-responsive" />
+<div class="footer_banner"> <img src="<?php echo base_url('assets/images/footer-bg.jpg'); ?>" class="img-responsive" />
   <div class="footer_banner_content col-md-10 col-lg-10 col-sm-10 col-xs-12">
     <div class="col-md-4 col-lg-4 col-sm-4 col-xs-4">
       <h4 class="footer_heading">الإرتباطات التشعبية </h4>

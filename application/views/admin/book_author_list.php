@@ -1,4 +1,4 @@
-<link href="<?php echo base_url('assets/css/dataTables.bootstrap4.min.css');?>" rel="stylesheet">
+<link href="<?php echo base_url('assets/css/dataTables.bootstrap4.min.css'); ?>" rel="stylesheet">
 <main role="main" class="container">
   <div class="alert alert-dark table_header">
     <h5>List Of Authors In Books</h5>
@@ -24,32 +24,30 @@
       </thead>
       <tbody>
         <?php
-        $i=1;
-        foreach ($authors as $row)
-        {
-        ?>
-        <tr id="<?php echo $row->id.'_'.$row->author_name.'_'.$row->status;?>">
-          <td><?php echo $i;?></td>
-          <td><?php echo $row->author_name;?></td>
-          <td><?php echo $row->date_time;?></td>
-          <td><?php if($row->status) echo 'Active'; else echo 'In-Active'?></td>
-          <td>
-            <button type="button" class="btn btn-info btn-sm editRow" data-toggle="modal"
-              data-target="#exampleModalCenter1">
-              Edit
-            </button>
-          </td>
-        </tr>
-        <?php
-            $i++;
+        $i = 1;
+        foreach ($authors as $row) {
+          ?>
+          <tr id="<?php echo $row->id . '_' . $row->author_name . '_' . $row->status; ?>">
+            <td><?php echo $i; ?></td>
+            <td><?php echo $row->author_name; ?></td>
+            <td><?php echo $row->date_time; ?></td>
+            <td><?php if ($row->status) echo 'Active';
+                else echo 'In-Active' ?></td>
+            <td>
+              <button type="button" class="btn btn-info btn-sm editRow" data-toggle="modal" data-target="#exampleModalCenter1">
+                Edit
+              </button>
+            </td>
+          </tr>
+          <?php
+          $i++;
         }
         ?>
       </tbody>
     </table>
   </div>
   <!-- Modal -->
-  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-    aria-hidden="true">
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -72,8 +70,7 @@
     </div>
   </div>
   <!-- update Model -->
-  <div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-    aria-hidden="true">
+  <div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -110,46 +107,46 @@
   </div>
 </main><!-- /.container -->
 <script>
-$(document).ready(function() {
-  var baseURL = '<?php echo base_url(''); ?>';
-  $('#example').DataTable();
-  $('#addToDB').on('click', function() {
-    var authorName = $('#authorName').val();
-    $.post(baseURL + '/admin/bookauthor/addAuthor', {
-      "aurthorName": authorName
-    }, function(data) {
-      if (data) {
-        alert('Author Added Sucessfully');
-        location.reload();
-      }
-    })
+  $(document).ready(function() {
+    var baseURL = '<?php echo base_url(''); ?>';
+    $('#example').DataTable();
+    $('#addToDB').on('click', function() {
+      var authorName = $('#authorName').val();
+      $.post(baseURL + '/admin/bookauthor/addAuthor', {
+        "aurthorName": authorName
+      }, function(data) {
+        if (data) {
+          alert('Author Added Sucessfully');
+          location.reload();
+        }
+      })
+    });
+    $('.editRow').on('click', function() {
+      var authorDetails = $(this).parents('tr').attr('id');
+      var res = authorDetails.split('_');
+      $('#rowId').val(res[0]);
+      $('#edit_authorName').val(res[1]);
+      if (res[2] == '1')
+        $("#customRadio").prop("checked", true);
+      else
+        $("#customRadio2").prop("checked", true);
+    });
+    $('#updateToDB').on('click', function() {
+      var authorId = $('#rowId').val();
+      var authorName = $('#edit_authorName').val();
+      var status = $("input[name='status']:checked").val();
+      $.post(baseURL + '/admin/bookauthor/updateAuthor', {
+        "authorId": authorId,
+        'authorName': authorName,
+        'status': status
+      }, function(data) {
+        if (data) {
+          alert('Author Details Updated Sucessfully');
+          location.reload();
+        }
+      })
+    });
   });
-  $('.editRow').on('click', function() {
-    var authorDetails = $(this).parents('tr').attr('id');
-    var res = authorDetails.split('_');
-    $('#rowId').val(res[0]);
-    $('#edit_authorName').val(res[1]);
-    if (res[2] == '1')
-      $("#customRadio").prop("checked", true);
-    else
-      $("#customRadio2").prop("checked", true);
-  });
-  $('#updateToDB').on('click', function() {
-    var authorId = $('#rowId').val();
-    var authorName = $('#edit_authorName').val();
-    var status = $("input[name='status']:checked").val();
-    $.post(baseURL + '/admin/bookauthor/updateAuthor', {
-      "authorId": authorId,
-      'authorName': authorName,
-      'status': status
-    }, function(data) {
-      if (data) {
-        alert('Author Details Updated Sucessfully');
-        location.reload();
-      }
-    })
-  });
-});
 </script>
-<script src="<?php echo base_url('assets/js/jquery.dataTables.min.js"');?>"></script>
-<script src="<?php echo base_url('assets/js/dataTables.bootstrap4.min.js');?>"></script>
+<script src="<?php echo base_url('assets/js/jquery.dataTables.min.js"'); ?>"></script>
+<script src="<?php echo base_url('assets/js/dataTables.bootstrap4.min.js'); ?>"></script>

@@ -1,4 +1,4 @@
-<link href="<?php echo base_url('assets/css/dataTables.bootstrap4.min.css');?>" rel="stylesheet">
+<link href="<?php echo base_url('assets/css/dataTables.bootstrap4.min.css'); ?>" rel="stylesheet">
 <main role="main" class="container">
   <div class="alert alert-dark table_header">
     <h5>List Of Riwaya In Quran</h5>
@@ -26,40 +26,38 @@
       </thead>
       <tbody>
         <?php
-        $i=1;
-        foreach ($riways as $row)
-        {
-        ?>
+        $i = 1;
+        foreach ($riways as $row) {
+          ?>
 
-        <tr id="<?php echo $row->id.
-		  '_'.$row->riwaya_name_arabic.
-		  '_'.$row->riwaya_name.
-		  '_'.$row->riwaya_name_french.
-		  '_'.$row->status;?>">
+          <tr id="<?php echo $row->id .
+                    '_' . $row->riwaya_name_arabic .
+                    '_' . $row->riwaya_name .
+                    '_' . $row->riwaya_name_french .
+                    '_' . $row->status; ?>">
 
-          <td><?php echo $i;?></td>
-          <td><?php echo $row->riwaya_name;?></td>
-          <td><?php echo $row->riwaya_name_arabic;?></td>
-          <td><?php echo $row->riwaya_name_french;?></td>
-          <td><?php echo $row->date_time;?></td>
-          <td><?php if($row->status) echo 'Active'; else echo 'In-Active'?></td>
-          <td>
-            <button type="button" class="btn btn-info btn-sm editRow" data-toggle="modal"
-              data-target="#exampleModalCenter1">
-              Edit
-            </button>
-          </td>
-        </tr>
-        <?php
-            $i++;
+            <td><?php echo $i; ?></td>
+            <td><?php echo $row->riwaya_name; ?></td>
+            <td><?php echo $row->riwaya_name_arabic; ?></td>
+            <td><?php echo $row->riwaya_name_french; ?></td>
+            <td><?php echo $row->date_time; ?></td>
+            <td><?php if ($row->status) echo 'Active';
+                else echo 'In-Active' ?></td>
+            <td>
+              <button type="button" class="btn btn-info btn-sm editRow" data-toggle="modal" data-target="#exampleModalCenter1">
+                Edit
+              </button>
+            </td>
+          </tr>
+          <?php
+          $i++;
         }
         ?>
       </tbody>
     </table>
   </div>
   <!-- Modal -->
-  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-    aria-hidden="true">
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -86,8 +84,7 @@
     </div>
   </div>
   <!-- update Model -->
-  <div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-    aria-hidden="true">
+  <div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -128,56 +125,56 @@
   </div>
 </main><!-- /.container -->
 <script>
-$(document).ready(function() {
-  var baseURL = '<?php echo base_url(''); ?>';
-  $('#example').DataTable();
-  $('#addToDB').on('click', function() {
-    var riwayaName = $('#riwayaName').val();
-    var riwayaNameArabic = $('#riwayaNameArabic').val();
-    var riwayaNameFrench = $('#riwayaNameFrench').val();
-    $.post(baseURL + '/admin/quranriways/addRiwaya', {
-      "riwayaName": riwayaName,
-      "riwayaNameArabic": riwayaNameArabic,
-      "riwayaNameFrench": riwayaNameFrench
-    }, function(data) {
-      if (data) {
-        alert('Riwaya Added Sucessfully');
-        location.reload();
-      }
-    })
+  $(document).ready(function() {
+    var baseURL = '<?php echo base_url(''); ?>';
+    $('#example').DataTable();
+    $('#addToDB').on('click', function() {
+      var riwayaName = $('#riwayaName').val();
+      var riwayaNameArabic = $('#riwayaNameArabic').val();
+      var riwayaNameFrench = $('#riwayaNameFrench').val();
+      $.post(baseURL + '/admin/quranriways/addRiwaya', {
+        "riwayaName": riwayaName,
+        "riwayaNameArabic": riwayaNameArabic,
+        "riwayaNameFrench": riwayaNameFrench
+      }, function(data) {
+        if (data) {
+          alert('Riwaya Added Sucessfully');
+          location.reload();
+        }
+      })
+    });
+    $('.editRow').on('click', function() {
+      var RiwayaDetails = $(this).parents('tr').attr('id');
+      var res = RiwayaDetails.split('_');
+      $('#rowId').val(res[0]);
+      $('#editRiwayaNameArabic').val(res[1]);
+      $('#editRiwayaName').val(res[2]);
+      $('#editRiwayaNameFrench').val(res[3]);
+      if (res[4] == '1')
+        $("#customRadio").prop("checked", true);
+      else
+        $("#customRadio2").prop("checked", true);
+    });
+    $('#updateToDB').on('click', function() {
+      var riwayaId = $('#rowId').val();
+      var riwayaName = $('#editRiwayaName').val();
+      var riwayaNameArabic = $('#editRiwayaNameArabic').val();
+      var riwayaNameFrench = $('#editRiwayaNameFrench').val();
+      var status = $("input[name='status']:checked").val();
+      $.post(baseURL + '/admin/quranriways/updateRiwaya', {
+        "riwayaId": riwayaId,
+        'riwayaName': riwayaName,
+        'riwayaNameArabic': riwayaNameArabic,
+        'riwayaNameFrench': riwayaNameFrench,
+        'status': status
+      }, function(data) {
+        if (data) {
+          alert('Riwaya Details Updated Sucessfully');
+          location.reload();
+        }
+      })
+    });
   });
-  $('.editRow').on('click', function() {
-    var RiwayaDetails = $(this).parents('tr').attr('id');
-    var res = RiwayaDetails.split('_');
-    $('#rowId').val(res[0]);
-    $('#editRiwayaNameArabic').val(res[1]);
-    $('#editRiwayaName').val(res[2]);
-    $('#editRiwayaNameFrench').val(res[3]);
-    if (res[4] == '1')
-      $("#customRadio").prop("checked", true);
-    else
-      $("#customRadio2").prop("checked", true);
-  });
-  $('#updateToDB').on('click', function() {
-    var riwayaId = $('#rowId').val();
-    var riwayaName = $('#editRiwayaName').val();
-    var riwayaNameArabic = $('#editRiwayaNameArabic').val();
-    var riwayaNameFrench = $('#editRiwayaNameFrench').val();
-    var status = $("input[name='status']:checked").val();
-    $.post(baseURL + '/admin/quranriways/updateRiwaya', {
-      "riwayaId": riwayaId,
-      'riwayaName': riwayaName,
-      'riwayaNameArabic': riwayaNameArabic,
-      'riwayaNameFrench': riwayaNameFrench,
-      'status': status
-    }, function(data) {
-      if (data) {
-        alert('Riwaya Details Updated Sucessfully');
-        location.reload();
-      }
-    })
-  });
-});
 </script>
-<script src="<?php echo base_url('assets/js/jquery.dataTables.min.js"');?>"></script>
-<script src="<?php echo base_url('assets/js/dataTables.bootstrap4.min.js');?>"></script>
+<script src="<?php echo base_url('assets/js/jquery.dataTables.min.js"'); ?>"></script>
+<script src="<?php echo base_url('assets/js/dataTables.bootstrap4.min.js'); ?>"></script>

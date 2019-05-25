@@ -1,7 +1,8 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Welcome extends CI_Controller {
+class Welcome extends CI_Controller
+{
 
 	/**
 	 * Index Page for this controller.
@@ -25,15 +26,15 @@ class Welcome extends CI_Controller {
 		} else {
 			$level = $this->session->userdata('level');
 			// access login for admin
-			if($level === '1'){
+			if ($level === '1') {
 				redirect('admin/page');
 
-			// access login for staff
-			}elseif($level === '2'){
+				// access login for staff
+			} elseif ($level === '2') {
 				redirect('admin/page/staff');
 
-			// access login for author
-			}else{
+				// access login for author
+			} else {
 				redirect('admin/page/author');
 			}
 		}

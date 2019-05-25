@@ -1,4 +1,4 @@
-<link href="<?php echo base_url('assets/css/dataTables.bootstrap4.min.css');?>" rel="stylesheet">
+<link href="<?php echo base_url('assets/css/dataTables.bootstrap4.min.css'); ?>" rel="stylesheet">
 <main role="main" class="container">
   <div class="alert alert-dark table_header">
     <h5>List Of Recitation Types In Quran</h5>
@@ -26,35 +26,32 @@
       </thead>
       <tbody>
         <?php
-        $i=1;
-        foreach ($recitationTypes as $row)
-        {
-        ?>
-        <tr
-          id="<?php echo $row->id.'_'.$row->recitation_type_name_arabic.'_'.$row->recitation_type_name.'_'.$row->recitation_type_name_french.'_'.$row->status;?>">
-          <td><?php echo $i;?></td>
-          <td><?php echo $row->recitation_type_name;?></td>
-          <td><?php echo $row->recitation_type_name_arabic;?></td>
-          <td><?php echo $row->recitation_type_name_french;?></td>
-          <td><?php echo $row->date_time;?></td>
-          <td><?php if($row->status) echo 'Active'; else echo 'In-Active'?></td>
-          <td>
-            <button type="button" class="btn btn-info btn-sm editRow" data-toggle="modal"
-              data-target="#exampleModalCenter1">
-              Edit
-            </button>
-          </td>
-        </tr>
-        <?php
-            $i++;
+        $i = 1;
+        foreach ($recitationTypes as $row) {
+          ?>
+          <tr id="<?php echo $row->id . '_' . $row->recitation_type_name_arabic . '_' . $row->recitation_type_name . '_' . $row->recitation_type_name_french . '_' . $row->status; ?>">
+            <td><?php echo $i; ?></td>
+            <td><?php echo $row->recitation_type_name; ?></td>
+            <td><?php echo $row->recitation_type_name_arabic; ?></td>
+            <td><?php echo $row->recitation_type_name_french; ?></td>
+            <td><?php echo $row->date_time; ?></td>
+            <td><?php if ($row->status) echo 'Active';
+                else echo 'In-Active' ?></td>
+            <td>
+              <button type="button" class="btn btn-info btn-sm editRow" data-toggle="modal" data-target="#exampleModalCenter1">
+                Edit
+              </button>
+            </td>
+          </tr>
+          <?php
+          $i++;
         }
         ?>
       </tbody>
     </table>
   </div>
   <!-- Modal -->
-  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-    aria-hidden="true">
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -66,13 +63,11 @@
         <div class="modal-body">
           <div class="form-group">
             <label for="exampleInputAuthorName">Enter Recitation Type Name - Arabic</label>
-            <input type="text" class="form-control" id="recitationTypeNameArabic"
-              placeholder="Recitation Type Name Arabic"> <label for="exampleInputAuthorName">Enter Recitation Type Name
+            <input type="text" class="form-control" id="recitationTypeNameArabic" placeholder="Recitation Type Name Arabic"> <label for="exampleInputAuthorName">Enter Recitation Type Name
               - English</label>
             <input type="text" class="form-control" id="recitationTypeName" placeholder="Recitation Type Name English">
             <label for="exampleInputAuthorName">Enter Recitation Type Name - French</label>
-            <input type="text" class="form-control" id="recitationTypeNameFrench"
-              placeholder="Recitation Type Name French">
+            <input type="text" class="form-control" id="recitationTypeNameFrench" placeholder="Recitation Type Name French">
           </div>
         </div>
         <div class="modal-footer">
@@ -83,8 +78,7 @@
     </div>
   </div>
   <!-- update Model -->
-  <div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-    aria-hidden="true">
+  <div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -97,14 +91,11 @@
           <input type="hidden" id="rowId">
           <div class="form-group">
             <label for="exampleInputAuthorName">Recitation Type Name - Arabic</label>
-            <input type="text" class="form-control" id="editRecitationTypeNameArabic"
-              placeholder="Recitation Type Name Arabic"> <label for="exampleInputAuthorName">Recitation Type Name -
+            <input type="text" class="form-control" id="editRecitationTypeNameArabic" placeholder="Recitation Type Name Arabic"> <label for="exampleInputAuthorName">Recitation Type Name -
               English</label>
-            <input type="text" class="form-control" id="editRecitationTypeName"
-              placeholder="Recitation Type Name English"> <label for="exampleInputAuthorName">Recitation Type Name
+            <input type="text" class="form-control" id="editRecitationTypeName" placeholder="Recitation Type Name English"> <label for="exampleInputAuthorName">Recitation Type Name
               French</label>
-            <input type="text" class="form-control" id="editRecitationTypeNameFrench"
-              placeholder="Recitation Type Name French">
+            <input type="text" class="form-control" id="editRecitationTypeNameFrench" placeholder="Recitation Type Name French">
 
           </div>
           <div class="form-group">
@@ -129,56 +120,56 @@
   </div>
 </main><!-- /.container -->
 <script>
-$(document).ready(function() {
-  var baseURL = '<?php echo base_url(''); ?>';
-  $('#example').DataTable();
-  $('#addToDB').on('click', function() {
-    var recitationTypeName = $('#recitationTypeName').val();
-    var recitationTypeNameArabic = $('#recitationTypeNameArabic').val();
-    var recitationTypeNameFrench = $('#recitationTypeNameFrench').val();
-    $.post(baseURL + '/admin/quranrecitationtypes/addRecitationType', {
-      "recitationTypeName": recitationTypeName,
-      "recitationTypeNameArabic": recitationTypeNameArabic,
-      "recitationTypeNameFrench": recitationTypeNameFrench
-    }, function(data) {
-      if (data) {
-        alert('Recitation Type Added Sucessfully');
-        location.reload();
-      }
-    })
+  $(document).ready(function() {
+    var baseURL = '<?php echo base_url(''); ?>';
+    $('#example').DataTable();
+    $('#addToDB').on('click', function() {
+      var recitationTypeName = $('#recitationTypeName').val();
+      var recitationTypeNameArabic = $('#recitationTypeNameArabic').val();
+      var recitationTypeNameFrench = $('#recitationTypeNameFrench').val();
+      $.post(baseURL + '/admin/quranrecitationtypes/addRecitationType', {
+        "recitationTypeName": recitationTypeName,
+        "recitationTypeNameArabic": recitationTypeNameArabic,
+        "recitationTypeNameFrench": recitationTypeNameFrench
+      }, function(data) {
+        if (data) {
+          alert('Recitation Type Added Sucessfully');
+          location.reload();
+        }
+      })
+    });
+    $('.editRow').on('click', function() {
+      var recitationTypeDetails = $(this).parents('tr').attr('id');
+      var res = recitationTypeDetails.split('_');
+      $('#rowId').val(res[0]);
+      $('#editRecitationTypeNameArabic').val(res[1]);
+      $('#editRecitationTypeName').val(res[2]);
+      $('#editRecitationTypeNameFrench').val(res[3]);
+      if (res[4] == '1')
+        $("#customRadio").prop("checked", true);
+      else
+        $("#customRadio2").prop("checked", true);
+    });
+    $('#updateToDB').on('click', function() {
+      var recitationTypeId = $('#rowId').val();
+      var recitationTypeName = $('#editRecitationTypeName').val();
+      var recitationTypeNameArabic = $('#editRecitationTypeNameArabic').val();
+      var recitationTypeNameFrench = $('#editRecitationTypeNameFrench').val();
+      var status = $("input[name='status']:checked").val();
+      $.post(baseURL + '/admin/quranrecitationtypes/updateRecitationType', {
+        "recitationTypeId": recitationTypeId,
+        'recitationTypeName': recitationTypeName,
+        'recitationTypeNameArabic': recitationTypeNameArabic,
+        'recitationTypeNameFrench': recitationTypeNameFrench,
+        'status': status
+      }, function(data) {
+        if (data) {
+          alert('Recitation Type Details Updated Sucessfully');
+          location.reload();
+        }
+      })
+    });
   });
-  $('.editRow').on('click', function() {
-    var recitationTypeDetails = $(this).parents('tr').attr('id');
-    var res = recitationTypeDetails.split('_');
-    $('#rowId').val(res[0]);
-    $('#editRecitationTypeNameArabic').val(res[1]);
-    $('#editRecitationTypeName').val(res[2]);
-    $('#editRecitationTypeNameFrench').val(res[3]);
-    if (res[4] == '1')
-      $("#customRadio").prop("checked", true);
-    else
-      $("#customRadio2").prop("checked", true);
-  });
-  $('#updateToDB').on('click', function() {
-    var recitationTypeId = $('#rowId').val();
-    var recitationTypeName = $('#editRecitationTypeName').val();
-    var recitationTypeNameArabic = $('#editRecitationTypeNameArabic').val();
-    var recitationTypeNameFrench = $('#editRecitationTypeNameFrench').val();
-    var status = $("input[name='status']:checked").val();
-    $.post(baseURL + '/admin/quranrecitationtypes/updateRecitationType', {
-      "recitationTypeId": recitationTypeId,
-      'recitationTypeName': recitationTypeName,
-      'recitationTypeNameArabic': recitationTypeNameArabic,
-      'recitationTypeNameFrench': recitationTypeNameFrench,
-      'status': status
-    }, function(data) {
-      if (data) {
-        alert('Recitation Type Details Updated Sucessfully');
-        location.reload();
-      }
-    })
-  });
-});
 </script>
-<script src="<?php echo base_url('assets/js/jquery.dataTables.min.js"');?>"></script>
-<script src="<?php echo base_url('assets/js/dataTables.bootstrap4.min.js');?>"></script>
+<script src="<?php echo base_url('assets/js/jquery.dataTables.min.js"'); ?>"></script>
+<script src="<?php echo base_url('assets/js/dataTables.bootstrap4.min.js'); ?>"></script>

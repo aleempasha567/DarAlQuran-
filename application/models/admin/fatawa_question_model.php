@@ -21,14 +21,25 @@ class fatawa_question_model extends CI_Model
     return $this->db->get()->result();
   }
 
-  function insertFatawaQuestion($question, $fatwaCategoryId, $answer, $questionerName, $questionerEmailid, $questionerContactno)
+  function insertFatawaQuestion($question, $fatwaCategoryId, $answer="", $status, $questionerName="", $questionerEmailid="", $questionerContactno="")
   {
     $this->db->set('question', $question);
     $this->db->set('fatwa_category_id', $fatwaCategoryId);
-    $this->db->set('answer', $answer);
-    $this->db->set('questioner_name', $questionerName);
-    $this->db->set('questioner_emailid', $questionerEmailid);
-    $this->db->set('questioner_contactno', $questionerContactno);
+    if ($answer != '') {
+      $this->db->set('answer', $answer);
+    }
+    if ($status != '') {
+      $this->db->set('status', $status);
+    }
+    if ($questionerName != '') {
+      $this->db->set('questioner_name', $questionerName);
+    }
+    if ($questionerEmailid != '') {
+      $this->db->set('questioner_emailid', $questionerEmailid);
+    }
+    if ($questionerContactno != '') {
+      $this->db->set('questioner_contactno', $questionerContactno);
+    }
     $this->db->insert('tbl_fatwa_question');
     return true;
   }

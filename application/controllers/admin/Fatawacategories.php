@@ -21,7 +21,7 @@ class fatawacategories extends CI_Controller
 
   function getCategories()
   {
-    $data = $this->fatawa_category_model->getAllCategory();
+    $data = $this->fatawa_category_model->getAllCategory(1);
     echo '<option value="">Select</option>';
     foreach ($data as $key => $value) {
       echo '<option value="' . $value->id . '">' . $value->category_name . '</option>';

@@ -15,17 +15,19 @@
     <table id="example" class="table table-striped table-bordered" style="width:100%">
       <thead class="thead-dark">
         <tr>
-          <th>#</th>
-          <th>Question</th>
-          <th>Category</th>
-          <th>Answer/Reply</th>
-          <th>Questioner Name</th>
-          <th>Questioner ContactNo</th>
-          <th>Questioner EmailId</th>
-          <th>Status</th>
-          <th>Date Added</th>
-
-          <th>Update </th>
+          <th rowspan="2">#</th>
+          <th rowspan="2">Question</th>
+          <th rowspan="2">Category</th>
+          <th rowspan="2">Answer/Reply</th>
+          <th colspan="3">Questioner </th>
+          <th rowspan="2">Status</th>
+          <th rowspan="2">Date Added</th>
+          <th rowspan="2">Update</th>
+        </tr>
+        <tr>
+          <th>Name</th>
+          <th>Contact No</th>
+          <th>EmailId</th>
         </tr>
       </thead>
       <tbody>
@@ -79,34 +81,18 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-
-
         <div class="modal-body">
           <div class="form-group">
-
             <label for="exampleFormControlTextarea1">Enter Question</label>
             <textarea class="form-control" id="question" rows="3" placeholder="Enter Question"></textarea>
-
-
-
             <div class="form-group">
               <label for="exampleFormControlSelect1">Select Category</label>
               <select class="form-control" id="fatwaCategory">
                 <option value="">Select</option>
               </select>
             </div>
-
             <label for="exampleFormControlTextarea1">Enter Answer/Reply</label>
             <textarea class="form-control" id="answer" rows="3" placeholder="Enter Answer/Reply"></textarea>
-
-
-
-            <label for="exampleInputAuthorName">Enter Questioner Name</label>
-            <input type="text" class="form-control" id="questionerName" placeholder="Questioner Name ">
-            <label for="exampleInputAuthorName">Enter Questioner EmailId</label>
-            <input type="text" class="form-control" id="questionerEmailid" placeholder="Questioner EmailId ">
-            <label for="exampleInputAuthorName">Enter Questioner ContactNo</label>
-            <input type="text" class="form-control" id="questionerContactno" placeholder="Questioner ContactNo ">
           </div>
         </div>
         <div class="modal-footer">
@@ -143,11 +129,8 @@
 
               <label for="exampleFormControlTextarea1">Enter Answer/Reply</label>
               <textarea class="form-control" id="editAnswer" rows="3" placeholder="Please Enter Answer/Reply"></textarea>
-
-              <!--
-		   <label for="exampleInputAuthorName">Enter Answer/Reply</label>
-            <input type="text" class="form-control" id="editAnswer" placeholder="Please Enter Answer/Reply">
-		     -->
+              <label for="exampleInputAuthorName">Enter Questioner Name</label>
+              <label for="exampleInputAuthorName">Enter Questioner Name</label>
               <label for="exampleInputAuthorName">Enter Questioner Name</label>
               <input type="text" class="form-control" id="editQuestionerName" placeholder="Questioner Name ">
               <label for="exampleInputAuthorName">Enter Questioner EmailId</label>
@@ -160,27 +143,11 @@
               <label for="exampleFormControlSelect1">Select Fatawa Level</label>
               <select class="form-control" id="editFatwaStatus" name="status">
                 <option value="">Select</option>
+                <option value="0">Inactive</option>
                 <option value="1">Open</option>
-                <option value="2">Process</option>
-                <option value="3">Close</option>
+                <option value="2">Completed</option>
               </select>
             </div>
-
-            <!--
-          <div class="form-group">
-            <label for="exampleInputStatus">Status</label>
-            <br>
-            <div class="custom-control custom-radio custom-control-inline">
-              <input type="radio" class="custom-control-input" id="customRadio" name="status" value="1">
-              <label class="custom-control-label" for="customRadio">Active</label>
-            </div>
-            <div class="custom-control custom-radio custom-control-inline">
-              <input type="radio" class="custom-control-input" id="customRadio2" name="status" value="0">
-              <label class="custom-control-label" for="customRadio2">In Active</label>
-            </div>
-          </div>
-        </div>
-		-->
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               <button type="button" class="btn btn-success" id="updateToDB">Update</button>
@@ -197,27 +164,16 @@
       $('#fatwaCategory').html(data);
       $('#editfatwaCategory').html(data);
     });
-
-
     $('#addToDB').on('click', function() {
-
       var question = $('#question').val();
-
       var fatwaCategoryId = $('#fatwaCategory').val();
       var answer = $('#answer').val();
-      var questionerName = $('#questionerName').val();
-      var questionerEmailid = $('#questionerEmailid').val();
-      var questionerContactno = $('#questionerContactno').val();
-
       $.post(baseURL + '/admin/fatawaquestion/addFatawaQuestion', {
         "question": question,
         "fatwaCategoryId": fatwaCategoryId,
         "answer": answer,
-        "questionerName": questionerName,
-        "questionerEmailid": questionerEmailid,
-        "questionerContactno": questionerContactno
+        "status": '2'
       }, function(data) {
-
         if (data) {
           alert('Fatawa Question Added Sucessfully');
           location.reload();
@@ -227,31 +183,23 @@
     $('.editRow').on('click', function() {
       var fatwaQuestionDetails = $(this).parents('tr').attr('id');
       var res = fatwaQuestionDetails.split('_');
-
       $('#rowId').val(res[0]);
       $('#editQuestion').val(res[1]);
       $('#editfatwaCategory').val(res[2]);
       $('#editAnswer').val(res[3]);
-
       $('#editQuestionerName').val(res[4]);
       $('#editQuestionerEmailid').val(res[5]);
       $('#editQuestionerContactno').val(res[6]);
-
-      if (res[7] == '1')
-        $("#customRadio").prop("checked", true);
-      else
-        $("#customRadio2").prop("checked", true);
+      $('#editFatwaStatus').val(res[7]);
     });
     $('#updateToDB').on('click', function() {
       var questionId = $('#rowId').val();
       var question = $('#editQuestion').val();
       var answer = $('#editAnswer').val();
-
       var fatwaCategoryId = $('#editfatwaCategory').val();
       var questionerName = $('#editQuestionerName').val();
       var questionerEmailid = $('#editQuestionerEmailid').val();
       var questionerContactno = $('#editQuestionerContactno').val();
-      <!-- var status = $("input[name='status']:checked").val();-->
       var status = $('#editFatwaStatus').val();
 
       $.post(baseURL + '/admin/fatawaquestion/updateFatawaQuestion', {

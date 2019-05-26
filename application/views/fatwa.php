@@ -54,6 +54,15 @@ function getArabicDate($str)
   $str = str_replace($western_arabic, $eastern_arabic, $str);
   echo $str;
 }
+function custom_echo($x, $length)
+{
+  if (strlen($x) <= $length) {
+    echo $x;
+  } else {
+    $y = substr($x, 0, $length) . '...';
+    echo $y;
+  }
+}
 ?>
 <div class="article-page article-main-content">
   <!--Carousel-->
@@ -134,9 +143,10 @@ function getArabicDate($str)
           <p class="margin-0"><?php echo getArabicDate($row->last_updated); ?></p>
           <p class="shaikh-name"><?php echo $row->question; ?></p>
         </div>
+        <p class="complete-answer hide"><?php echo $row->answer; ?></p>
         <div class="middle-cotent">
-          <p><?php echo $row->answer; ?></p>
-          <a href="">قراءة المزيد</a>
+          <p><?php echo custom_echo($row->answer, 200); ?></p>
+          <a href="javascript();" data-toggle="modal" data-target="#exampleModalCenter" class="complete_answer <?php if (strlen($row->answer) < 200) echo 'hide'; ?>">قراءة المزيد</a>
         </div>
         <div class="shaikh-icon">
           <div class="image-section">
@@ -195,6 +205,25 @@ function getArabicDate($str)
     </div>
   </div>
 </div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
 <link href="<?php echo base_url('assets/css/quran.css'); ?>" rel="stylesheet">
 <link href="<?php echo base_url('assets/css/search.css'); ?>" rel="stylesheet">
 <script type="text/javascript">
@@ -218,6 +247,12 @@ function getArabicDate($str)
           .addClass("cloneditem-" + (i))
           .appendTo($(this));
       }
+    });
+    $('.complete_answer').on('click', function() {
+      var question = $(this).parents('.shaikh-section').find('.shaikh-name').html();
+      var answer = $(this).parents('.shaikh-section').find('.complete-answer').html();
+      $('#exampleModalCenter #exampleModalLongTitle').html(question);
+      $('#exampleModalCenter .modal-body').html('<p>'+answer+'</p>');
     });
   });
 </script>

@@ -2,7 +2,7 @@
 class fatawa_question_model extends CI_Model
 {
 
-  function getAllFatawaQuestion($status = "")
+  function getAllFatawaQuestion($status = "", $orderby = "", $limit = "")
   {
     $t1 = 'tbl_fatwa_question';
     $t2 = 'tbl_fatawa_categories';
@@ -18,10 +18,16 @@ class fatawa_question_model extends CI_Model
     if ($status != '') {
       $this->db->where($t1 . '.status', $status);
     }
+    if ($orderby != '') {
+      $this->db->order_by($t1 . '.' . $orderby, 'DESC');
+    }
+    if ($limit != '') {
+      $this->db->limit($limit);
+    }
     return $this->db->get()->result();
   }
 
-  function insertFatawaQuestion($question, $fatwaCategoryId, $answer="", $status, $questionerName="", $questionerEmailid="", $questionerContactno="")
+  function insertFatawaQuestion($question, $fatwaCategoryId, $answer = "", $status, $questionerName = "", $questionerEmailid = "", $questionerContactno = "")
   {
     $this->db->set('question', $question);
     $this->db->set('fatwa_category_id', $fatwaCategoryId);

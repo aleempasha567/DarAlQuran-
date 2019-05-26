@@ -166,21 +166,17 @@ function custom_echo($x, $length)
 <div class="clearfix"></div>
 
 <div class="message-section" id="messageSection">
-  <div class="">
-    <div class="">
-      <div class="col-md-offset-8 col-md-2 col-sm-4">
-        <h1 class="">الرد على شيء</h1>
-        <div class="select">
-          <select name="slct" id="dropdown2">
-            <option value="">تحديد</option>
-            <?php
-            foreach ($categories as $row) {
-              ?>
-              <option value="<?php echo $row->id; ?>"><?php echo $row->category_name_arabic; ?></option>
-            <?php } ?>
-          </select>
-        </div>
-      </div>
+  <div class="col-md-offset-8 col-md-2 col-sm-4">
+    <h1 class="">الرد على شيء</h1>
+    <div class="select">
+      <select name="slct" id="dropdown4">
+        <option value="">تحديد</option>
+        <?php
+        foreach ($categories as $row) {
+          ?>
+          <option value="<?php echo $row->id; ?>"><?php echo $row->category_name_arabic; ?></option>
+        <?php } ?>
+      </select>
     </div>
   </div>
   <div class="row">
@@ -195,39 +191,40 @@ function custom_echo($x, $length)
       </div>
       <div class="form-group">
         <label for="mobile">Mobile:</label>
-        <input type="tel" class="form-control" placeholder="Mobile" name="mobile">
+        <input type="tel" class="form-control" id="mobile" placeholder="Mobile" name="mobile">
       </div>
       <textarea placeholder="أكتب هنا" rows="20" name="comment[text]" id="comment_text" cols="40" class="ui-autocomplete-input" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true"></textarea>
       <div class="tectarea-buttons">
         <input type="submit" class="send" value="إرسال" />
-        <input type="submit" class="reset" value="إعادة تعيين" />
+        <input type="reset" class="reset" value="إعادة تعيين" />
       </div>
     </div>
   </div>
 </div>
 <!-- Modal -->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle"></h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
 
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
+</div>
 <link href="<?php echo base_url('assets/css/quran.css'); ?>" rel="stylesheet">
 <link href="<?php echo base_url('assets/css/search.css'); ?>" rel="stylesheet">
 <script type="text/javascript">
   $(document).ready(function() {
+    var baseURL = '<?php echo base_url(''); ?>';
     $('#Carousel').carousel({
       interval: false
     });
@@ -252,7 +249,35 @@ function custom_echo($x, $length)
       var question = $(this).parents('.shaikh-section').find('.shaikh-name').html();
       var answer = $(this).parents('.shaikh-section').find('.complete-answer').html();
       $('#exampleModalCenter #exampleModalLongTitle').html(question);
-      $('#exampleModalCenter .modal-body').html('<p>'+answer+'</p>');
+      $('#exampleModalCenter .modal-body').html('<p>' + answer + '</p>');
+    });
+    $('.reset').on('click', function() {
+      $('#name').val('');
+      $('#email').val('');
+      $('#mobile').val('');
+      $('#comment_text').val('');
+      $('#dropdown4').val('');
+    });
+    $('.send').on('click', function() {
+      var question = $('#comment_text').val();
+      var fatwaCategoryId = $('#dropdown4').val();
+      var name = $('#name').val();
+      var email = $('#email').val();
+      var mobile = $('#mobile').val();
+
+      $.post(baseURL + '/admin/fatawaquestion/addFatawaQuestion', {
+        "question": question,
+        "fatwaCategoryId": fatwaCategoryId,
+        "name": name,
+        "email": email,
+        "mobile": mobile,
+        "status": '1'
+      }, function(data) {
+        if (data) {
+          alert('Question Posted Sucessfully');
+          location.reload();
+        }
+      })
     });
   });
 </script>

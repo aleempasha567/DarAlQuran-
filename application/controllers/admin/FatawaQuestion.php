@@ -25,7 +25,10 @@ class fatawaquestion extends CI_Controller
     $fatwaCategoryId  = $this->input->post('fatwaCategoryId', TRUE);
     $answer  = $this->input->post('answer', TRUE);
     $status  = $this->input->post('status', TRUE);
-    $result = $this->fatawa_question_model->insertFatawaQuestion($question, $fatwaCategoryId, $answer, $status);
+    $name  = $this->input->post('name', TRUE);
+    $email  = $this->input->post('email', TRUE);
+    $mobile  = $this->input->post('mobile', TRUE);
+    $result = $this->fatawa_question_model->insertFatawaQuestion($question, $fatwaCategoryId, $answer, $status, $name, $email, $mobile);
     echo $result;
   }
 

@@ -2,10 +2,23 @@
 class fatawa_question_model extends CI_Model
 {
 
-  function getAllFatawaQuestion()
+  function getAllFatawaQuestion($status = "")
   {
-    $result = $this->db->get('tbl_fatwa_question');
-    return $result->result();
+    $t1 = 'tbl_fatwa_question';
+    $t2 = 'tbl_fatawa_categories';
+    $get = [
+      $t1 . '.*',
+      $t2 . '.category_name',
+      $t2 . '.category_name_arabic',
+      $t2 . '.category_name_french'
+    ];
+    $this->db->select($get);
+    $this->db->from($t1);
+    $this->db->join($t2, $t1 . '.fatwa_category_id = ' . $t2 . '.id', 'left');
+    if ($status != '') {
+      $this->db->where($t1 . '.status', $status);
+    }
+    return $this->db->get()->result();
   }
 
   function insertFatawaQuestion($question, $fatwaCategoryId, $answer, $questionerName, $questionerEmailid, $questionerContactno)

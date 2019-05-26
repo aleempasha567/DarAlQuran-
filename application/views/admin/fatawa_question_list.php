@@ -45,15 +45,15 @@
                     '_' . $row->status; ?>">
             <td><?php echo $i; ?></td>
             <td><?php echo $row->question; ?></td>
-            <td><?php echo $row->fatwa_category_id; ?></td>
+            <td><?php echo $row->category_name_arabic; ?></td>
             <td><?php echo $row->answer; ?></td>
 
             <td><?php echo $row->questioner_name; ?></td>
             <td><?php echo $row->questioner_contactno; ?></td>
             <td><?php echo $row->questioner_emailid; ?></td>
             <td><?php if ($row->status == 1) echo 'Open';
-                else if ($row->status == 2) echo 'Process';
-                else  echo 'Completed' ?></td>
+                else if ($row->status == 2) echo 'Completed';
+                else  echo 'Inactive' ?></td>
             <td><?php echo $row->date_time; ?></td>
 
             <td>

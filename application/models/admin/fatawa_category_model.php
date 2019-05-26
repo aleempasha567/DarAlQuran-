@@ -2,8 +2,11 @@
 class Fatawa_category_model extends CI_Model
 {
 
-  function getAllCategory()
+  function getAllCategory($status = "")
   {
+    if ($status != '') {
+      $this->db->where('status', $status);
+    }
     $result = $this->db->get('tbl_fatawa_categories');
     return $result->result();
   }

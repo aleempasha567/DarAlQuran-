@@ -2,8 +2,11 @@
 class Mufti_model extends CI_Model
 {
 
-  function getAllMufties()
+  function getAllMufties($status = "")
   {
+    if ($status != '') {
+      $this->db->where('status', $status);
+    }
     $result = $this->db->get('tbl_mufti_names');
     return $result->result();
   }

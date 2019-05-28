@@ -2,7 +2,7 @@
 class fatawa_question_model extends CI_Model
 {
 
-  function getAllFatawaQuestion($status = "", $orderby = "", $limit = "", $shaikh_id= "", $fatwaCategoryId="")
+  function getAllFatawaQuestion($status = "", $orderby = "", $rowno = "", $rowperpage="", $shaikh_id= "", $fatwaCategoryId="")
   {
     $t1 = 'tbl_fatwa_question';
     $t2 = 'tbl_fatawa_categories';
@@ -27,8 +27,8 @@ class fatawa_question_model extends CI_Model
     if ($orderby != '') {
       $this->db->order_by($t1 . '.' . $orderby, 'DESC');
     }
-    if ($limit != '') {
-      $this->db->limit($limit);
+    if ($rowperpage != '' || $rowno) {
+      $this->db->limit($rowperpage, $rowno);
     }
     return $this->db->get()->result();
   }
@@ -68,5 +68,26 @@ class fatawa_question_model extends CI_Model
     $this->db->where('id', $questionId);
     $this->db->update('tbl_fatwa_question', $data);
     return true;
+  }
+  function getrecordCount($status = "", $orderby = "", $shaikh_id= "", $fatwaCategoryId=""){
+    $this->db->select('count(*) as allcount');
+    $this->db->from('tbl_fatwa_question');
+
+    if ($status != '') {
+      $this->db->where('status', $status);
+    }
+    if ($shaikh_id != '') {
+      $this->db->where('mufti_id', $shaikh_id);
+    }
+    if ($fatwaCategoryId != '') {
+      $this->db->where('fatwa_category_id', $fatwaCategoryId);
+    }
+    if ($orderby != '') {
+      $this->db->order_by($orderby, 'DESC');
+    }
+    $query = $this->db->get();
+    $result = $query->result_array();
+
+    return $result[0]['allcount'];
   }
 }

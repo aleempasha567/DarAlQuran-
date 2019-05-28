@@ -64,6 +64,8 @@ function custom_echo($x, $length)
   }
 }
 ?>
+<input type="hidden" value="<?php echo $rowsPerPage; ?>" id="rowsPerPage">
+<input type="hidden" value="1" id="pageCount">
 <div class="article-page article-main-content">
   <!--Carousel-->
   <div class="container">
@@ -161,9 +163,18 @@ function custom_echo($x, $length)
       </div>
     <?php
   } ?>
+    <?php if ($toatlCount > $rowsPerPage) {
+      ?>
+      <div style="text-align:center;padding: 5px;">
+        <button type="button" id="loadmore" class="btn btn-info">Load More</button>
+      </div>
+    <?php
+  }
+  ?>
   </div>
   <!--Questions section-->
 </div>
+
 
 <div class="clearfix"></div>
 
@@ -248,7 +259,6 @@ function custom_echo($x, $length)
       }
     });
     $('.complete_answer').on('click', function() {
-      console.log('testing');
       var question = $(this).parents('.shaikh-section').find('.shaikh-name').html();
       var answer = $(this).parents('.shaikh-section').find('.complete-answer').html();
       $('#exampleModalCenter #exampleModalLongTitle').html(question);
@@ -283,21 +293,31 @@ function custom_echo($x, $length)
       })
     });
     $('#dropdown1, #dropdown2').on('change', function() {
+      $('#pageCount').val('1'); //resetting the page count if search is updated
       var shaikh_id = $('#dropdown1').val();
       var category_id = $('#dropdown2').val();
-
       $.post(baseURL + 'Fatwa/getAllFatawaQuestions', {
         shaikh_id: shaikh_id,
-        category_id: category_id
+        category_id: category_id,
+        rowsPerPage: $('#rowsPerPage').val(),
+        pageCount: $('#pageCount').val()
       }, function(data) {
         $('#result').html(data);
-        $('.complete_answer').on('click', function() {
-          console.log('testing');
-          var question = $(this).parents('.shaikh-section').find('.shaikh-name').html();
-          var answer = $(this).parents('.shaikh-section').find('.complete-answer').html();
-          $('#exampleModalCenter #exampleModalLongTitle').html(question);
-          $('#exampleModalCenter .modal-body').html('<p>' + answer + '</p>');
-        });
+      });
+    });
+    $('#result').on('click', '#loadmore', function() {
+      $(this).parent('div').remove();
+      var shaikh_id = $('#dropdown1').val();
+      var category_id = $('#dropdown2').val();
+      var pageCount = parseInt($('#pageCount').val()) + 1;
+      $.post(baseURL + 'Fatwa/getAllFatawaQuestions', {
+        shaikh_id: shaikh_id,
+        category_id: category_id,
+        rowsPerPage: $('#rowsPerPage').val(),
+        pageCount: pageCount
+      }, function(data) {
+        $('#result').append(data);
+        $('#pageCount').val(pageCount);
       });
     });
   });

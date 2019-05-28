@@ -80,8 +80,9 @@ function custom_echo($x, $length)
             foreach ($questions as $row) {
               ?>
               <div class="item <?php if ($i == 0) echo 'active'; ?>">
-                <div class="col-md-3 carousel-content">
-                  <p><?php echo $row->question; ?></p>
+                <div class="col-md-3 carousel-content popup_answer" data-toggle="modal" data-target="#exampleModalCenter">
+                  <p class="question"><?php echo $row->question; ?></p>
+                  <p class="answer hide"><?php echo $row->answer; ?></p>
                 </div>
               </div>
               <?php $i++;
@@ -261,6 +262,12 @@ function custom_echo($x, $length)
     $('.complete_answer').on('click', function() {
       var question = $(this).parents('.shaikh-section').find('.shaikh-name').html();
       var answer = $(this).parents('.shaikh-section').find('.complete-answer').html();
+      $('#exampleModalCenter #exampleModalLongTitle').html(question);
+      $('#exampleModalCenter .modal-body').html('<p>' + answer + '</p>');
+    });
+    $('.popup_answer').on('click', function() {
+      var question = $(this).find('.question').html();
+      var answer = $(this).find('.answer').html();
       $('#exampleModalCenter #exampleModalLongTitle').html(question);
       $('#exampleModalCenter .modal-body').html('<p>' + answer + '</p>');
     });

@@ -30,30 +30,31 @@ class Fatwa extends CI_Controller
     $fatwaCategoryId  = $this->input->post('category_id', TRUE);
     $rowsPerPage  = $this->input->post('rowsPerPage', TRUE);
     $rowno  = $this->input->post('pageCount', TRUE);
+    $third_option  = $this->input->post('third_option', TRUE);
 
-    if($rowno != 0){
-      $rowno = ($rowno-1) * $rowsPerPage;
+    if ($rowno != 0) {
+      $rowno = ($rowno - 1) * $rowsPerPage;
     }
 
     $records_shown_count = $rowno + 5;
 
-    $data = $this->fatawa_question_model->getAllFatawaQuestion(2, 'last_updated', $rowno, $rowsPerPage , $shaikh_id, $fatwaCategoryId); // status, orderby & limit
+    $data = $this->fatawa_question_model->getAllFatawaQuestion(2, 'last_updated', $rowno, $rowsPerPage, $shaikh_id, $fatwaCategoryId, $third_option); // status, orderby & limit
     $toatlCount = $this->fatawa_question_model->getrecordCount(2, 'last_updated', $shaikh_id, $fatwaCategoryId); // status, orderby & limit
     // echo $records_shown_count.'-'.$toatlCount; exit;
     $western_arabic = array('0', '1', '2', '3', '4', '5', '6', '7', '8', '9');
     $eastern_arabic = array('٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩');
 
     foreach ($data as $key => $row) {
-      echo '<div class="mishary-section "><div class="col-md-offset-1 col-md-10 shaikh-section margin-bottom-30"><div><p class="margin-0">' .str_replace($western_arabic, $eastern_arabic, $row->last_updated). '</p><p class="shaikh-name">' . $row->question . '</p>
+      echo '<div class="mishary-section "><div class="col-md-offset-1 col-md-10 shaikh-section margin-bottom-30"><div><p class="margin-0">' . str_replace($western_arabic, $eastern_arabic, $row->last_updated) . '</p><p class="shaikh-name">' . $row->question . '</p>
         </div>
         <p class="complete-answer hide">' . $row->answer . '</p>
         <div class="middle-cotent">
           <p>';
-          if (strlen($row->answer) <= 200) {
-            echo $row->answer;
-          } else {
-            echo substr($row->answer, 0, 200) . '...';
-          }
+      if (strlen($row->answer) <= 200) {
+        echo $row->answer;
+      } else {
+        echo substr($row->answer, 0, 200) . '...';
+      }
       echo '</p><a data-toggle="modal" data-target="#exampleModalCenter" class="complete_answer ';
       if (strlen($row->answer) < 200) {
         echo 'hide';

@@ -2,7 +2,7 @@
 class fatawa_question_model extends CI_Model
 {
 
-  function getAllFatawaQuestion($status = "", $orderby = "", $rowno = "", $rowperpage="", $shaikh_id= "", $fatwaCategoryId="")
+  function getAllFatawaQuestion($status = "", $orderby = "", $rowno = "", $rowperpage = "", $shaikh_id = "", $fatwaCategoryId = "", $third_option = "")
   {
     $t1 = 'tbl_fatwa_question';
     $t2 = 'tbl_fatawa_categories';
@@ -25,7 +25,11 @@ class fatawa_question_model extends CI_Model
       $this->db->where($t1 . '.fatwa_category_id', $fatwaCategoryId);
     }
     if ($orderby != '') {
-      $this->db->order_by($t1 . '.' . $orderby, 'DESC');
+      if($third_option == 'change_order'){
+        $this->db->order_by($t1 . '.' . $orderby, 'ASC');
+      } else {
+        $this->db->order_by($t1 . '.' . $orderby, 'DESC');
+      }
     }
     if ($rowperpage != '' || $rowno) {
       $this->db->limit($rowperpage, $rowno);
@@ -69,7 +73,8 @@ class fatawa_question_model extends CI_Model
     $this->db->update('tbl_fatwa_question', $data);
     return true;
   }
-  function getrecordCount($status = "", $orderby = "", $shaikh_id= "", $fatwaCategoryId=""){
+  function getrecordCount($status = "", $orderby = "", $shaikh_id = "", $fatwaCategoryId = "")
+  {
     $this->db->select('count(*) as allcount');
     $this->db->from('tbl_fatwa_question');
 

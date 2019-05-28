@@ -105,8 +105,8 @@ function custom_echo($x, $length)
       <div class="select">
         <select name="slct" id="dropdown3">
           <option value="">تحديد</option>
-          <option></option>
-          <option></option>
+          <option value="change_order">Older Posts First</option>
+          <option value="most_viewed">Most Viewed</option>
         </select>
       </div>
     </div>
@@ -299,15 +299,17 @@ function custom_echo($x, $length)
         }
       })
     });
-    $('#dropdown1, #dropdown2').on('change', function() {
+    $('#dropdown1, #dropdown2, #dropdown3').on('change', function() {
       $('#pageCount').val('1'); //resetting the page count if search is updated
       var shaikh_id = $('#dropdown1').val();
       var category_id = $('#dropdown2').val();
+      var third_option = $('#dropdown3').val();
       $.post(baseURL + 'Fatwa/getAllFatawaQuestions', {
         shaikh_id: shaikh_id,
         category_id: category_id,
         rowsPerPage: $('#rowsPerPage').val(),
-        pageCount: $('#pageCount').val()
+        pageCount: $('#pageCount').val(),
+        third_option: third_option
       }, function(data) {
         $('#result').html(data);
       });

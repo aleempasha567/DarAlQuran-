@@ -58,6 +58,16 @@
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Articles
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a href="<?php echo site_url('admin/articlescholar'); ?>" class="dropdown-item" href="#">Article Scholar</a>
+                <a class="dropdown-item" href="<?php echo site_url('admin/articlecategories'); ?>">Article Categories</a>
+                <a class="dropdown-item" href="<?php echo site_url('admin/articlelist'); ?>">Article List/Add Article</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Islamic program
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">

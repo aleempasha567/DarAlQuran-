@@ -134,32 +134,34 @@ function custom_echo($x, $length)
   </div>
   <!--Order by section-->
   <!--Questions section-->
-  <?php
-  foreach ($questions as $row) {
-    ?>
-    <div class="mishary-section ">
-      <div class="col-md-offset-1 col-md-10 shaikh-section margin-bottom-30">
-        <div>
-          <p class="margin-0"><?php echo getArabicDate($row->last_updated); ?></p>
-          <p class="shaikh-name"><?php echo $row->question; ?></p>
-        </div>
-        <p class="complete-answer hide"><?php echo $row->answer; ?></p>
-        <div class="middle-cotent">
-          <p><?php echo custom_echo($row->answer, 200); ?></p>
-          <a href="javascript();" data-toggle="modal" data-target="#exampleModalCenter" class="complete_answer <?php if (strlen($row->answer) < 200) echo 'hide'; ?>">قراءة المزيد</a>
-        </div>
-        <div class="shaikh-icon">
-          <div class="image-section">
-            <img src="<?php echo base_url('assets/images/mishary-rashed.png'); ?>" class="img-responsive" />
+  <div id="result">
+    <?php
+    foreach ($questions as $row) {
+      ?>
+      <div class="mishary-section ">
+        <div class="col-md-offset-1 col-md-10 shaikh-section margin-bottom-30">
+          <div>
+            <p class="margin-0"><?php echo getArabicDate($row->last_updated); ?></p>
+            <p class="shaikh-name"><?php echo $row->question; ?></p>
+          </div>
+          <p class="complete-answer hide"><?php echo $row->answer; ?></p>
+          <div class="middle-cotent">
+            <p><?php echo custom_echo($row->answer, 200); ?></p>
+            <a data-toggle="modal" data-target="#exampleModalCenter" class="complete_answer <?php if (strlen($row->answer) < 200) echo 'hide'; ?>">قراءة المزيد</a>
+          </div>
+          <div class="shaikh-icon">
+            <div class="image-section">
+              <img src="<?php echo base_url('assets/images/mishary-rashed.png'); ?>" class="img-responsive" />
+            </div>
+          </div>
+          <div class="views">
+            شوهد 99 <i class="fa fa-eye"></i>
           </div>
         </div>
-        <div class="views">
-          شوهد 99 <i class="fa fa-eye"></i>
-        </div>
       </div>
-    </div>
-  <?php
-} ?>
+    <?php
+  } ?>
+  </div>
   <!--Questions section-->
 </div>
 
@@ -246,6 +248,7 @@ function custom_echo($x, $length)
       }
     });
     $('.complete_answer').on('click', function() {
+      console.log('testing');
       var question = $(this).parents('.shaikh-section').find('.shaikh-name').html();
       var answer = $(this).parents('.shaikh-section').find('.complete-answer').html();
       $('#exampleModalCenter #exampleModalLongTitle').html(question);
@@ -278,6 +281,24 @@ function custom_echo($x, $length)
           location.reload();
         }
       })
+    });
+    $('#dropdown1, #dropdown2').on('change', function() {
+      var shaikh_id = $('#dropdown1').val();
+      var category_id = $('#dropdown2').val();
+
+      $.post(baseURL + 'Fatwa/getAllFatawaQuestions', {
+        shaikh_id: shaikh_id,
+        category_id: category_id
+      }, function(data) {
+        $('#result').html(data);
+        $('.complete_answer').on('click', function() {
+          console.log('testing');
+          var question = $(this).parents('.shaikh-section').find('.shaikh-name').html();
+          var answer = $(this).parents('.shaikh-section').find('.complete-answer').html();
+          $('#exampleModalCenter #exampleModalLongTitle').html(question);
+          $('#exampleModalCenter .modal-body').html('<p>' + answer + '</p>');
+        });
+      });
     });
   });
 </script>

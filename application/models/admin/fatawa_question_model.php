@@ -25,7 +25,7 @@ class fatawa_question_model extends CI_Model
       $this->db->where($t1 . '.fatwa_category_id', $fatwaCategoryId);
     }
     if ($orderby != '') {
-      if($third_option == 'change_order'){
+      if ($third_option == 'change_order') {
         $this->db->order_by($t1 . '.' . $orderby, 'ASC');
       } else {
         $this->db->order_by($t1 . '.' . $orderby, 'DESC');
